@@ -1,6 +1,6 @@
 {
   "name": "plain-language-checker",
-  "homepage": "https://yichiang.github.io/CSEP590b-accessibility-checker",
+  "homepage": "https://yichiang.github.io/plain-language-checker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
