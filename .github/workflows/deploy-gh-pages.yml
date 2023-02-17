@@ -30,7 +30,7 @@ jobs:
 
     - name: Deploy
       run: |
-        git remote set-url origin https://yichiang:$token@github.com/yichiang/CSEP590b-accessibility-checker
+        git remote set-url origin https://yichiang:$token@github.com/yichiang/plain-language-checker
         git config --global user.email "yi_chiang@outlook.com"
         git config --global user.name "Yi"
         cd plain-language-checker/
