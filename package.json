@@ -46,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "@types/carbon__react": "npm:@types/carbon-components-react",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
