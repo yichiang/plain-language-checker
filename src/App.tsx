@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.scss';
 import TextInput from './Components/TextInput/TextInput';
 
 function App(): JSX.Element {
