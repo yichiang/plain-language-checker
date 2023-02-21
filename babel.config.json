@@ -1,5 +1,6 @@
 {
   "presets": [
+    "babel-plugin-styled-components",
     "@babel/preset-react",
     "@babel/preset-typescript"
   ]
