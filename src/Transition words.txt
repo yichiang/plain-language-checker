@@ -1,0 +1,75 @@
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when adding a point
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+also
+and
+in addition
+besides
+what is more
+similarly
+further
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when giving an example
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+for instance
+for example
+for one thing
+for another thing
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when rephrasing
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+in other words
+that is
+in short
+put differently
+again
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when introducing a result
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+so
+as a result
+thus
+therefore
+accordingly
+then
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when contrasting
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+but
+however
+on the other hand
+still
+nevertheless
+conversely
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when summing up
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+to summarize
+to sum up
+to conclude
+in conclusion
+in short
+# Type: Good
+# Name: Transition words
+# Description: Nice use of a transition word! Use this when sequencing ideas
+# Link: https://www.plainlanguage.gov/guidelines/organize/use-transition-words/
+# Link text: Use transition words - Plain language guidelines
+first
+second
+third
+fourth
+then
+next
+finally
