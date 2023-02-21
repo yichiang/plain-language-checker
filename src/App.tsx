@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import TextInput from './Components/TextInput/TextInput';
+import Header from './Components/Header/Header';
 
 function App(): JSX.Element {
 	return (
 		<div className="App">
-			<TextInput ></TextInput>
+			<Header></Header>
 		</div>
 	);
 }
