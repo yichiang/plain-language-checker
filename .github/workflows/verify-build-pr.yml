@@ -1,8 +1,8 @@
 name: NodeJS with Webpack
 
 on:
-  push:
-    branches: [ "master", "main", "test-deployment" ]
+  pull_request:
+    branches: [ "master", "main" ]
 env: 
  token: ${{ secrets.TOKEN }}
 jobs:
@@ -24,10 +24,4 @@ jobs:
     - name: Build
       run: |
         npm install
-
-    - name: Deploy
-      run: |
-        git remote set-url origin https://yichiang:$token@github.com/yichiang/plain-language-checker
-        git config --global user.email "yi_chiang@outlook.com"
-        git config --global user.name "Yi"
-        npm run deploy
+        npm run build
