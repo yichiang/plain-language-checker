@@ -4,21 +4,38 @@ import {
 	AccordionItem
 } from '@carbon/react';
 import './ReportPanel.scss';
+import { PlainLanguageProblem, ReportType } from '../../Types';
 
-function ReportPanel(): JSX.Element {
 
-
+function ReportPanel(props: ReportPanelPropsType): JSX.Element {
+	const {items} = props;
+	console.log(items);
 	return (
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
-			<p className='subtitle'>We found 2 additional words</p>
+			<p className='subtitle'>We found {items.length} additional words</p>
 			<Accordion className='report-list'>
-				<AccordionItem title="Title 1"><p>The accordion component delivers large amounts of content in a small space through progressive disclosure. The user gets key details about the underlying content and can choose to expand that content within the constraints of the accordion. Accordions work especially well on mobile interfaces or whenever vertical space is at a premium.</p></AccordionItem>
-				<AccordionItem title="Title 2"><p>The accordion component delivers large amounts of content in a small space through progressive disclosure. The user gets key details about the underlying content and can choose to expand that content within the constraints of the accordion. Accordions work especially well on mobile interfaces or whenever vertical space is at a premium.</p></AccordionItem>
-				<AccordionItem title="Title 3"><p>The accordion component delivers large amounts of content in a small space through progressive disclosure. The user gets key details about the underlying content and can choose to expand that content within the constraints of the accordion. Accordions work especially well on mobile interfaces or whenever vertical space is at a premium.</p></AccordionItem>
+				{items.map( (item, index) => {
+					const {type, title, occurrence } = item;
+					return (
+
+						<AccordionItem 
+							key={index}
+							title={`${occurrence} ${title}`}>
+							<p>
+								{type}
+							</p>
+						</AccordionItem>
+
+					);
+
+				})}
 			</Accordion>
 		</div>
 	);
 }
 
+type ReportPanelPropsType = {
+    items: PlainLanguageProblem[]
+}
 export default ReportPanel;
