@@ -15,22 +15,22 @@ function App(): JSX.Element {
 			{
 				type: ReportType.niceToHave,
 				title: 'Use Transistion Words', 
-				occurence: 10	
+				occurrence: 10	
 			},
 			{
 				type: ReportType.warning,
 				title: 'Use Positive Words', 
-				occurence: 5	
+				occurrence: 5	
 			},
 			{
 				type: ReportType.error,
 				title: 'Use Abbreviation', 
-				occurence: 2	
+				occurrence: 2	
 			}
 
 
 		];
-		list = list.sort(item => item.occurence);
+		list = list.sort(item => item.occurrence);
 		setPossibleProblemList(list);
 	};
 

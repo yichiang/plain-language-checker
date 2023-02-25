@@ -10,5 +10,5 @@ export enum ReportType {
 export type PlainLanguageProblem = {
     type: ReportType;
     title: string;
-    occurence: number;
+    occurrence: number;
 }
