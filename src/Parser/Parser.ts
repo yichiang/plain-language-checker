@@ -72,7 +72,7 @@ export class Paragraph {
 		// Paragraph number, starts at 1 for the first paragraph in the text
 		this.paragraphNumber = paragraphNumber;
 		this.sentences = [];
-		const sentencesText = text.split(". ");
+		const sentencesText = text.split('. ');
 		let idx = 1;
 		for (const sentenceText in sentencesText)
 		{
@@ -139,7 +139,7 @@ export class Sentence {
 		// Sentence number, starts at 1 for the first sentence in the paragraph
 		this.sentenceNumber = sentenceNumber;
 		this.paragraphNumber = paragraphNumber;
-		this.words = text.trim().split(" ");
+		this.words = text.trim().split(' ');
 		// Counters
 		this.wordsCount = this.words.length;
 		//////////////////////////////////////////////////////////
@@ -294,16 +294,16 @@ class WordList {
 	  this.set = new Set();
 	}
 
-    processSentence(sentence: Sentence): void {
+	processSentence(sentence: Sentence): void {
 		// Note to Sofia: We should potentially create the HTML parts of the report here as well 
 
-        // Check our map and set to see if the sentence contains any of them
-        // If so, create a Feedback belonging to that sentence
+		// Check our map and set to see if the sentence contains any of them
+		// If so, create a Feedback belonging to that sentence
 		// Note: Had to enable downlevelIteration in tsconfig.json.
 		// https://mariusschulz.com/blog/downlevel-iteration-for-es3-es5-in-typescript
-        for (const [wordsToSearch, suggestionWords] of this.map) {
-            if (sentence.getText().includes(wordsToSearch))
-            {
+		for (const [wordsToSearch, suggestionWords] of this.map) {
+			if (sentence.getText().includes(wordsToSearch))
+			{
 				if (this.feedbackType === FeedbackType.Issue)
 				{
 					sentence.getIssues().push(new Issue(this.name, this.link, this.linkText, this.description, wordsToSearch, suggestionWords));
@@ -316,13 +316,13 @@ class WordList {
 				{
 					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, wordsToSearch));
 				}
-            }    
-        }
+			}    
+		}
 
 		// Now check all the words in our set, these don't have any suggestions
-        for (const wordsToSearch of this.set) {
-            if (sentence.getText().includes(wordsToSearch))
-            {
+		for (const wordsToSearch of this.set) {
+			if (sentence.getText().includes(wordsToSearch))
+			{
 				if (this.feedbackType === FeedbackType.Issue)
 				{
 					sentence.getIssues().push(new Issue(this.name, this.link, this.linkText, this.description, wordsToSearch));
@@ -335,10 +335,10 @@ class WordList {
 				{
 					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, wordsToSearch));
 				}
-            }    
-        }
+			}    
+		}
 
-    }
+	}
 }
 
 // TODO: Add WordsLists here
@@ -349,15 +349,15 @@ class WordList {
 
 function runParser(): void {
 	// First ingest the text, this will be what we read from the text box input instead of textDemo
-	let text = new Text(textDemo);
+	const text = new Text(textDemo);
 
 	// TODO: Create all the WordLists here
-	let dummyWordList = new WordList("Name", FeedbackType.Issue, "Description", "Link", "LinkText");
+	const dummyWordList = new WordList('Name', FeedbackType.Issue, 'Description', 'Link', 'LinkText');
 
 	// Process each sentence, looking for Feedback
 	for (const paragraph of text.getParagraphs())
 	{
-		for (let sentence of paragraph.getSentences())
+		for (const sentence of paragraph.getSentences())
 		{
 			dummyWordList.processSentence(sentence);
 		}
