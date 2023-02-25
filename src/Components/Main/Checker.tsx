@@ -5,8 +5,12 @@ import {
 } from '@carbon/react';
 import './Checker.scss';
 
-function Checker(): JSX.Element {
+function Checker(props: any): JSX.Element {
+	const [inputContent, setInputContent] = useState<string>('');
 
+	const onTextInputChange = (event: any) => {
+		setInputContent(event.target.value);
+	};
 
 	return (
 		<div>
@@ -19,9 +23,14 @@ function Checker(): JSX.Element {
 				maxCount={2000}
 				cols={200}
 				rows={10}
+				value={inputContent}
+				onChange={onTextInputChange}
 			/>
-			<Button className="submit-btn">Secondary</Button>
-
+			<Button 
+				className="submit-btn"
+				onClick={() => props.onClickSubmit(inputContent)}>
+            Submit
+			</Button>
 
 		</div>
 	);
