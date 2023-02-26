@@ -22,7 +22,7 @@ export default function checkPassive(sentence: Sentence, checkForBy = false) {
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			match[0] || '',
-			`consider to replace ${match[0]} with positive voice`
+			`consider to replace "${match[0]}" with positive voice`
 		));
 		match = r.exec(sentence.getText());
 	}
