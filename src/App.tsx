@@ -12,16 +12,27 @@ function App(): JSX.Element {
 	const onClickSubmit = (article: string) => {
 		console.log(article);
 
-		let parsedText = new Text(article);
+		const parsedText = new Text(article);
 
-		console.log("Paragraph count: " + parsedText.getParagraphsCount());
-		console.log("Sentence count: " + parsedText.getSentencesCount());
-		console.log("Word count: " + parsedText.getWordsCount());
-		console.log("Transition words count: " + parsedText.getTransitionWordsCount());
-		console.log("Examples count: " + parsedText.getExamplesCount());
+		console.log('Paragraph count: ' + parsedText.getParagraphsCount());
+		console.log('Sentence count: ' + parsedText.getSentencesCount());
+		console.log('Word count: ' + parsedText.getWordsCount());
+		console.log('Transition words count: ' + parsedText.getTransitionWordsCount());
+		console.log('Examples count: ' + parsedText.getExamplesCount());
 
-		// // console.log("Text text: ");
-		// // console.log(parsedText.getText());
+		// Look for Feedback
+		parsedText.parseText();
+
+		console.log('Issues count: ' + parsedText.getIssuesCount());
+		console.log('Suggestions count: ' + parsedText.getSuggestionsCount());
+		console.log('Kudos count: ' + parsedText.getKudosCount());
+
+		console.log('---------- Issues ----------');
+		console.log(parsedText.getIssues());
+		console.log('---------- Suggestions ----------');
+		console.log(parsedText.getSuggestions());
+		console.log('---------- Kudos ----------');
+		console.log(parsedText.getKudos());
 
 		//ToDo: run plain language checker
 		let list: PlainLanguageProblem[] = [
@@ -40,7 +51,6 @@ function App(): JSX.Element {
 				title: 'Use Abbreviation', 
 				occurrence: 2	
 			}
-
 
 		];
 		list = list.sort(item => item.occurrence);
