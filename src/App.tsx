@@ -3,7 +3,7 @@ import './App.scss';
 import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
 import ReportPanel from './Components/Main/ReportPanel';
-import { FeedbackData, FeedbackType } from './Types';
+import { FeedbackData } from './Types';
 import { Text } from './Parser/Parser';
 
 function App(): JSX.Element {

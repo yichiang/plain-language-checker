@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {
 	TextArea,
 	Button
 } from '@carbon/react';
 import './Checker.scss';
 
-function Checker(props: any): JSX.Element {
+function Checker(props: CheckerPropsType): JSX.Element {
 	const [inputContent, setInputContent] = useState<string>('');
 
-	const onTextInputChange = (event: any) => {
-		setInputContent(event.target.value);
+	const onTextInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+		setInputContent((event as any).target.value);
 	};
 
 	return (
@@ -35,5 +35,7 @@ function Checker(props: any): JSX.Element {
 		</div>
 	);
 }
-
+type CheckerPropsType = {
+    onClickSubmit:  (inputValue: string) => void;
+}
 export default Checker;
