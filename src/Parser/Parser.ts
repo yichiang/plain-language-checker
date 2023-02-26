@@ -4,11 +4,11 @@ export class Text {
 
 	constructor(text: string) {
 		// Handle multiple line breaks
-		this.text = text.replace(/[\r\n]+/gi, "\n");
+		this.text = text.replace(/[\r\n]+/gi, '\n');
 		// Remove trailing linebreaks
-		this.text = this.text.replace(/[\r\n]+$/gi, "").trim();
+		this.text = this.text.replace(/[\r\n]+$/gi, '').trim();
 		// Split in paragraphs
-		const paragraphsText = this.text.split("\n");
+		const paragraphsText = this.text.split('\n');
 		this.paragraphs = [];
 		let idx = 1;
 		for (const paragraphText of paragraphsText)
@@ -147,16 +147,16 @@ export class Sentence {
 
 	constructor(text: string, sentenceNumber: number, paragraphNumber: number) {
 		// Handle multiple whitespaces
-		this.text = text.trim().replace(/[\s]+/gi, " ");
+		this.text = text.trim().replace(/[\s]+/gi, ' ');
 		// Sentence number, starts at 1 for the first sentence in the paragraph
 		this.sentenceNumber = sentenceNumber;
 		this.paragraphNumber = paragraphNumber;
-		this.words = text.split(' ');
+		this.words = this.text.split(' ');
 		// Counters
 		if (this.words.length == 0)
 		{
 			// If no whitespaces found, check if this is an empty string
-			this.wordsCount = text === "" ? 0 : 1;
+			this.wordsCount = text === '' ? 0 : 1;
 		}
 		else
 		{
@@ -303,15 +303,15 @@ class WordList {
 	private map: Map<string, string>;
 	private set: Set<string>;
 	constructor(name: string, feedbackType: FeedbackType, description: string, link: string, linkText: string) {
-	  this.name = name;
-	  this.feedbackType = feedbackType;
-	  this.description = description;
-	  this.link = link;
-	  this.linkText = linkText;
-	  // Contains a mapping from known words to suggested words
-	  this.map = new Map();
-	  // Words for which there are no suggestions. These might be good words or words that should be removed completely
-	  this.set = new Set();
+		this.name = name;
+		this.feedbackType = feedbackType;
+		this.description = description;
+		this.link = link;
+		this.linkText = linkText;
+		// Contains a mapping from known words to suggested words
+		this.map = new Map();
+		// Words for which there are no suggestions. These might be good words or words that should be removed completely
+		this.set = new Set();
 	}
 
 	processSentence(sentence: Sentence): void {
@@ -336,7 +336,7 @@ class WordList {
 				{
 					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, wordsToSearch));
 				}
-			}    
+			}
 		}
 
 		// Now check all the words in our set, these don't have any suggestions
@@ -355,7 +355,7 @@ class WordList {
 				{
 					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, wordsToSearch));
 				}
-			}    
+			}
 		}
 
 	}

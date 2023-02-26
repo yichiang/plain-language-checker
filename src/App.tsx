@@ -12,13 +12,13 @@ function App(): JSX.Element {
 	const onClickSubmit = (article: string) => {
 		console.log(article);
 
-		let parsedText = new Text(article);
+		const parsedText = new Text(article);
 
-		console.log("Paragraph count: " + parsedText.getParagraphsCount());
-		console.log("Sentence count: " + parsedText.getSentencesCount());
-		console.log("Word count: " + parsedText.getWordsCount());
-		console.log("Transition words count: " + parsedText.getTransitionWordsCount());
-		console.log("Examples count: " + parsedText.getExamplesCount());
+		console.log('Paragraph count: ' + parsedText.getParagraphsCount());
+		console.log('Sentence count: ' + parsedText.getSentencesCount());
+		console.log('Word count: ' + parsedText.getWordsCount());
+		console.log('Transition words count: ' + parsedText.getTransitionWordsCount());
+		console.log('Examples count: ' + parsedText.getExamplesCount());
 
 		// // console.log("Text text: ");
 		// // console.log(parsedText.getText());
