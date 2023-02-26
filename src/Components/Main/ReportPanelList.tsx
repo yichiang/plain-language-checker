@@ -15,7 +15,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
 			<p className='subtitle'>We found {items.length} additional words</p>
-			<UnorderedList className='report-list'>
+			<UnorderedList className='report-unordered-list'>
 				{items.map( (item, index) => {
 					const {name, 
 						matchedString,
@@ -30,9 +30,10 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 					return (
 
 						<ListItem key={index}>
-							{ `[${feedbackType}] ${name} - ${matchedString} 
-                                at paragraph ${paragraphNumber}, 
-                                sentence ${sentenceNumber}`}
+							[{feedbackType}] {name}
+							<strong> {matchedString} </strong> 
+                                at paragraph {paragraphNumber}, 
+                                sentence {sentenceNumber}
 
 							<UnorderedList nested>
 								<ListItem>
