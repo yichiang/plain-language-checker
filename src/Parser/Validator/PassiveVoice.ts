@@ -1,0 +1,26 @@
+import {irregulars} from './irregularVerbs.js';
+
+// Source: https://github.com/btford/passive-voice/blob/master/passive.js
+const re = new RegExp('\\b(am|are|were|being|is|been|was|be)\\b\\s*([\\w]+ed|' + irregulars.join('|') + ')\\b', 'gi');
+let byRe: RegExp; // lazly construct
+
+export default function checkPassive(sentence: string, checkForBy = false) {
+ 
+	const r = (checkForBy) ?
+		(byRe || constructByRe()) : re; // not sorry
+    
+	const suggestions = [];
+	const match = r.exec(sentence);
+	while (match) {
+		suggestions.push({
+			index: match.index,
+			offset: match[0].length
+		});
+        
+	}
+	return suggestions;
+    
+}
+function constructByRe () {
+	return byRe = new RegExp(re.toString().slice(1, -3) + '\\s*by\\b', 'gi');
+}
