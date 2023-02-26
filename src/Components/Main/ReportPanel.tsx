@@ -25,7 +25,7 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 							<p>
 								{description}
 
-                                {stringSuggestion}
+								{stringSuggestion}
 							</p>
 						</AccordionItem>
 

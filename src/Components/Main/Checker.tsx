@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, SyntheticEvent, useState} from 'react';
 import {
 	TextArea,
 	Button
@@ -9,7 +9,8 @@ function Checker(props: CheckerPropsType): JSX.Element {
 	const [inputContent, setInputContent] = useState<string>('');
 
 	const onTextInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-		setInputContent((event as any).target.value);
+		const target = (event as SyntheticEvent).target;
+		setInputContent((target as HTMLInputElement).value);
 	};
 
 	return (
