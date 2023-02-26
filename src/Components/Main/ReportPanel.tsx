@@ -26,10 +26,11 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 
 						<AccordionItem 
 							key={index}
-							title={`${name} - ${matchedString}`}>
+							title={
+								`${name} - ${matchedString} 
+                                at paragraph ${paragraphNumber}, 
+                                sentence ${sentenceNumber}`}>
 							<p>
-                            Paragraph: { paragraphNumber}
-                            Sentence Number: { sentenceNumber}
 								{description}
 
 								{stringSuggestion}
