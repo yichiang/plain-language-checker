@@ -4,12 +4,25 @@ import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
 import ReportPanel from './Components/Main/ReportPanel';
 import { PlainLanguageProblem, ReportType } from './Types';
+import { Text } from './Parser/Parser';
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<PlainLanguageProblem[]>([]);
 
 	const onClickSubmit = (article: string) => {
 		console.log(article);
+
+		let parsedText = new Text(article);
+
+		console.log("Paragraph count: " + parsedText.getParagraphsCount());
+		console.log("Sentence count: " + parsedText.getSentencesCount());
+		console.log("Word count: " + parsedText.getWordsCount());
+		console.log("Transition words count: " + parsedText.getTransitionWordsCount());
+		console.log("Examples count: " + parsedText.getExamplesCount());
+
+		// // console.log("Text text: ");
+		// // console.log(parsedText.getText());
+
 		//ToDo: run plain language checker
 		let list: PlainLanguageProblem[] = [
 			{
