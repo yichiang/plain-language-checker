@@ -2,7 +2,7 @@ import { FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
 import checkPassive from './Validator/PassiveVoice';
-import { WordList } from './WordList';
+import { wordListArray } from './WordList';
 
 export class Text {
 	private text: string;  // can be removed, leave for debugging
@@ -129,41 +129,24 @@ export class Text {
 
 	// Function that populates the Feedback items, it will process the text.
 	parseText (): void {
-
-		// TODO: Create all the WordLists here
-		const map1 = new Map<string, string>();
-		// // map1.set('a', 1);
-		// // map1.set('b', 2);
-		// // map1.set('c', 3);
-
-		const set1 = new Set<string>();
-		set1.add('also');
-		set1.add('and');
-		set1.add('in addition');
-		set1.add('besides');
-		set1.add('what is more');
-		set1.add('similarly');
-		set1.add('further');
-		const dummyWordList = new WordList(
-			'Transition words',
-			FeedbackType.Kudo,
-			'Nice use of a transition word! Use this when adding a point',
-			'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
-			'Use transition words - Plain language guidelines',
-			map1,
-			set1);
-
 		// Process each sentence, looking for Feedback
 		for (const paragraph of this.getParagraphs())
 		{
 			for (const sentence of paragraph.getSentences())
 			{
-				dummyWordList.processSentence(sentence);
+				// Check all WordList first
+				for (const wordList of wordListArray)
+				{
+					wordList.processSentence(sentence);
+				}
 
+				// Check for passive voice
 				checkPassive(sentence);
+
+				// TODO: Check for sentence and paragraph length here
+
 			}
 		}
-
 	}
 
 }
