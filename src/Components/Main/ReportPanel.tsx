@@ -16,13 +16,20 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 			<p className='subtitle'>We found {items.length} additional words</p>
 			<Accordion className='report-list'>
 				{items.map( (item, index) => {
-					const {name, stringSuggestion, description } = item;
+					const {name, 
+						matchedString,
+						paragraphNumber,
+						sentenceNumber,
+						stringSuggestion, 
+						description } = item;
 					return (
 
 						<AccordionItem 
 							key={index}
-							title={`${name}`}>
+							title={`${name} - ${matchedString}`}>
 							<p>
+                            Paragraph: { paragraphNumber}
+                            Sentence Number: { sentenceNumber}
 								{description}
 
 								{stringSuggestion}

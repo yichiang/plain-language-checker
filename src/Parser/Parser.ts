@@ -1,6 +1,7 @@
 import { FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
+import checkPassive from './Validator/PassiveVoice';
 import { WordList } from './WordList';
 
 export class Text {
@@ -159,7 +160,7 @@ export class Text {
 			{
 				dummyWordList.processSentence(sentence);
 
-				//console.log(checkPassive(sentence));
+				checkPassive(sentence);
 			}
 		}
 
