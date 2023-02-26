@@ -3,11 +3,11 @@ import './App.scss';
 import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
 import ReportPanel from './Components/Main/ReportPanel';
-import { PlainLanguageProblem, ReportType } from './Types';
+import { FeedbackData, FeedbackType } from './Types';
 import { Text } from './Parser/Parser';
 
 function App(): JSX.Element {
-	const [possibleProblemList, setPossibleProblemList] = useState<PlainLanguageProblem[]>([]);
+	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
 
 	const onClickSubmit = (article: string) => {
 		console.log(article);
@@ -34,26 +34,19 @@ function App(): JSX.Element {
 		console.log('---------- Kudos ----------');
 		console.log(parsedText.getKudos());
 
-		//ToDo: run plain language checker
-		let list: PlainLanguageProblem[] = [
-			{
-				type: ReportType.niceToHave,
-				title: 'Use Transistion Words', 
-				occurrence: 10	
-			},
-			{
-				type: ReportType.warning,
-				title: 'Use Positive Words', 
-				occurrence: 5	
-			},
-			{
-				type: ReportType.error,
-				title: 'Use Abbreviation', 
-				occurrence: 2	
-			}
-
-		];
-		list = list.sort(item => item.occurrence);
+		const list: FeedbackData[] = [];
+		for (const issue of parsedText.getIssues())
+		{
+			list.push(issue.getData());
+		}
+		for (const suggestion of parsedText.getSuggestions())
+		{
+			list.push(suggestion.getData());
+		}
+		for (const kudo of parsedText.getKudos())
+		{
+			list.push(kudo.getData());
+		}
 		setPossibleProblemList(list);
 	};
 

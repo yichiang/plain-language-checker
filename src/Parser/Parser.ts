@@ -1,3 +1,5 @@
+import { FeedbackData, FeedbackType } from '../Types/index';
+
 export class Text {
 	private text: string;  // can be removed, leave for debugging
 	private paragraphs: Paragraph[];
@@ -369,24 +371,8 @@ export class Sentence {
 
 }
 
-export enum FeedbackType {
-	Issue = 'Issue',
-	Suggestion = 'Suggestion',
-	Kudo = 'Kudo',
-}
-
 export class Feedback {
-	private name: string;
-	private link: string;
-	private linkText: string;
-	private description: string;
-	private matchedString: string;
-	private stringSuggestion: string;
-	private feedbackType: string;
-	private paragraphNumber: number;
-	private sentenceNumber: number;
-	// TODO: Add more information here. We could list the words in the context or just say a word number in the sentence
-	// https://github.com/yichiang/plain-language-checker/issues/33
+	private data: FeedbackData;
 	constructor(
 		name: string,
 		feedbackType: FeedbackType,
@@ -398,16 +384,22 @@ export class Feedback {
 		matchedString: string,
 		stringSuggestion = ''
 	) {
-		this.name = name;
-		this.feedbackType = feedbackType;
-		this.link = link;
-		this.linkText = linkText;
-		this.description = description;
-		this.paragraphNumber = paragraphNumber;
-		this.sentenceNumber = sentenceNumber;
-		// The values below are set by the parsing function
-		this.matchedString = matchedString; // String that matched a keyword
-		this.stringSuggestion = stringSuggestion; // Other word(s) suggestions, may be empty
+		this.data = {
+			name: name,
+			feedbackType: feedbackType,
+			link: link,
+			linkText: linkText,
+			description: description,
+			paragraphNumber: paragraphNumber,
+			sentenceNumber: sentenceNumber,
+			matchedString: matchedString, // String that matched a keyword
+			stringSuggestion: stringSuggestion // Other word(s) suggestions, may be empty
+		};
+	}
+
+	// Getters
+	getData (): FeedbackData {
+		return this.data;
 	}
 }
 
