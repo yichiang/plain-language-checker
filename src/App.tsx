@@ -5,6 +5,7 @@ import Checker from './Components/Main/Checker';
 import ReportPanel from './Components/Main/ReportPanel';
 import { FeedbackData } from './Types';
 import { Text } from './Parser/Parser';
+import ReportPanelList from './Components/Main/ReportPanelList';
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
@@ -58,6 +59,11 @@ function App(): JSX.Element {
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
+				{
+					submitted && possibleProblemList &&
+						<ReportPanelList items={possibleProblemList}/>		
+				}
+
 				{
 					submitted && possibleProblemList &&
 						<ReportPanel items={possibleProblemList}/>		
