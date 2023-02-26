@@ -3,9 +3,12 @@ export class Text {
 	private paragraphs: Paragraph[];
 
 	constructor(text: string) {
-		this.text = text;
-		const paragraphsText = text.split(`.
-		`);
+		// Handle multiple line breaks
+		this.text = text.replace(/[\r\n]+/gi, "\n");
+		// Remove trailing linebreaks
+		this.text = this.text.replace(/[\r\n]+$/gi, "").trim();
+		// Split in paragraphs
+		const paragraphsText = this.text.split("\n");
 		this.paragraphs = [];
 		let idx = 1;
 		for (const paragraphText of paragraphsText)
@@ -60,6 +63,10 @@ export class Text {
 		return count;
 	}
 
+	getText (): string {
+		return this.text;
+	}
+
 }
 
 export class Paragraph {
@@ -74,7 +81,7 @@ export class Paragraph {
 		this.sentences = [];
 		const sentencesText = text.split('. ');
 		let idx = 1;
-		for (const sentenceText in sentencesText)
+		for (const sentenceText of sentencesText)
 		{
 			this.sentences.push(new Sentence(sentenceText, idx, this.paragraphNumber));
 			idx++;
@@ -119,6 +126,10 @@ export class Paragraph {
 		return count;
 	}
 
+	getText (): string {
+		return this.text;
+	}
+
 }
 
 export class Sentence {
@@ -135,13 +146,22 @@ export class Sentence {
 	private kudos: Kudo[];
 
 	constructor(text: string, sentenceNumber: number, paragraphNumber: number) {
-		this.text = text;
+		// Handle multiple whitespaces
+		this.text = text.trim().replace(/[\s]+/gi, " ");
 		// Sentence number, starts at 1 for the first sentence in the paragraph
 		this.sentenceNumber = sentenceNumber;
 		this.paragraphNumber = paragraphNumber;
-		this.words = text.trim().split(' ');
+		this.words = text.split(' ');
 		// Counters
-		this.wordsCount = this.words.length;
+		if (this.words.length == 0)
+		{
+			// If no whitespaces found, check if this is an empty string
+			this.wordsCount = text === "" ? 0 : 1;
+		}
+		else
+		{
+			this.wordsCount = this.words.length;
+		}
 		//////////////////////////////////////////////////////////
 		// Everything below will be filled by the WordLists
 		//////////////////////////////////////////////////////////
