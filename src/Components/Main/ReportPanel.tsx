@@ -4,7 +4,7 @@ import {
 	AccordionItem
 } from '@carbon/react';
 import './ReportPanel.scss';
-import { PlainLanguageProblem, ReportType } from '../../Types';
+import { FeedbackData, FeedbackType } from '../../Types';
 
 
 function ReportPanel(props: ReportPanelPropsType): JSX.Element {
@@ -13,17 +13,29 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 	return (
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
-			<p className='subtitle'>We found {items.length} additional words</p>
+			<p className='subtitle'>We found {items.length} feedback items.</p>
 			<Accordion className='report-list'>
 				{items.map( (item, index) => {
-					const {type, title, occurrence } = item;
+					const {name, feedbackType, link, linkText, description, matchedString, stringSuggestion, paragraphNumber, sentenceNumber } = item;
 					return (
 
 						<AccordionItem 
 							key={index}
-							title={`${occurrence} ${title}`}>
+							title={`${feedbackType}: ${name}`}>
 							<p>
-								{type}
+								{ `Location: Paragraph ${paragraphNumber}, Sentence ${sentenceNumber}` }
+							</p>
+							<p>
+								{ `Description: ${description}` }
+							</p>
+							<p>
+								{ `More information at <a href="${link}">${linkText}</a>` }
+							</p>
+							<p>
+								{ `Matched word(s): ${matchedString}` }
+							</p>
+							<p>
+								{ `Suggestion: ${stringSuggestion}` }
 							</p>
 						</AccordionItem>
 
@@ -36,6 +48,6 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 }
 
 type ReportPanelPropsType = {
-    items: PlainLanguageProblem[]
+    items: FeedbackData[]
 }
 export default ReportPanel;

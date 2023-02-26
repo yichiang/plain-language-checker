@@ -1,14 +1,19 @@
-
-
-export enum ReportType {
-    warning,
-    error,
-    info,
-    niceToHave
+export enum FeedbackType {
+	Issue = 'Issue',
+	Suggestion = 'Suggestion',
+	Kudo = 'Kudo',
 }
 
-export type PlainLanguageProblem = {
-    type: ReportType;
-    title: string;
-    occurrence: number;
+// TODO: Add more information here. We could list the words in the context or just say a word number in the sentence
+// https://github.com/yichiang/plain-language-checker/issues/33
+export type FeedbackData = {
+    name: string;
+    feedbackType: FeedbackType;
+    link: string;
+    linkText: string;
+    description: string;
+    matchedString: string;
+    stringSuggestion: string;    
+    paragraphNumber: number;
+    sentenceNumber: number;
 }
