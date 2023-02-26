@@ -8,7 +8,7 @@ import { Text } from './Parser/Parser';
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
-
+	const [submitted, setSubmitted]= useState<boolean>(false);
 	const onClickSubmit = (article: string) => {
 		console.log(article);
 
@@ -48,6 +48,7 @@ function App(): JSX.Element {
 			list.push(kudo.getData());
 		}
 		setPossibleProblemList(list);
+		setSubmitted(false);
 	};
 
 	return (
@@ -58,6 +59,11 @@ function App(): JSX.Element {
 					onClickSubmit={onClickSubmit}
 				/>
 				{possibleProblemList && <ReportPanel items={possibleProblemList}/>}
+				{
+					submitted && (possibleProblemList ? 
+						<ReportPanel items={possibleProblemList}/>
+						: <h2>Great News! We could not find any issues.</h2>)		
+				}
 			</div>
 		</div>
 	);
