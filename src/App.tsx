@@ -48,7 +48,7 @@ function App(): JSX.Element {
 			list.push(kudo.getData());
 		}
 		setPossibleProblemList(list);
-		setSubmitted(false);
+		setSubmitted(true);
 	};
 
 	return (
@@ -58,11 +58,9 @@ function App(): JSX.Element {
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
-				{possibleProblemList && <ReportPanel items={possibleProblemList}/>}
 				{
-					submitted && (possibleProblemList ? 
-						<ReportPanel items={possibleProblemList}/>
-						: <h2>Great News! We could not find any issues.</h2>)		
+					submitted && possibleProblemList &&
+						<ReportPanel items={possibleProblemList}/>		
 				}
 			</div>
 		</div>
