@@ -3,8 +3,12 @@ import './App.scss';
 import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
 import ReportPanel from './Components/Main/ReportPanel';
-import { FeedbackData, FeedbackType } from './Types';
+import { FeedbackData } from './Types';
 import { Text } from './Parser/Parser';
+import { Route, Switch } from 'react-router-dom';
+import TextInput from './Components/TextInput/TextInput';
+import About from './Components/About/About';
+import Contact from './Components/Contact/Contact';
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
@@ -54,6 +58,11 @@ function App(): JSX.Element {
 		<div className="App">
 			<Header></Header>
 			<div className='container'>
+				<Switch>
+					<Route exact path="/" component={TextInput} />
+					<Route exact path="/about" component={About} />
+					<Route exact path="/contact" component={Contact} />
+				</Switch>
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>

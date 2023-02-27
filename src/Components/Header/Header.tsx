@@ -10,6 +10,7 @@ import {
 	SideNavItems,
 	HeaderSideNavItems
 } from '@carbon/react';
+import { LinkProps as RRLinkProps, Link } from 'react-router-dom';
 
 function Header(): JSX.Element {
 	const [isSideNavExpanded, setIsSideNavExpanded] = useState<boolean>(false);
@@ -30,14 +31,14 @@ function Header(): JSX.Element {
 				onClick={onClickSideNavExpand}
 				isActive={isSideNavExpanded}
 			/>
-			<HeaderName href="#" prefix="Plain Language">
+			<HeaderName <RRLinkProps> element={Link} to="/" prefix="Plain Language">
 				Checker
 			</HeaderName>
 			<HeaderNavigation aria-label="Plain Language Checker">
-				<HeaderMenuItem isCurrentPage href="#">
+				<HeaderMenuItem<RRLinkProps> element={Link} to="/about">
 					About
 				</HeaderMenuItem>
-				<HeaderMenuItem href="#">
+				<HeaderMenuItem<RRLinkProps> element={Link} to="/contact">
 					Contact
 				</HeaderMenuItem>
 			</HeaderNavigation>
@@ -48,10 +49,13 @@ function Header(): JSX.Element {
 			>
 				<SideNavItems>
 					<HeaderSideNavItems>
-						<HeaderMenuItem href="#">
+						<HeaderMenuItem<RRLinkProps> element={Link} to="/">
+							Checker
+						</HeaderMenuItem>
+						<HeaderMenuItem<RRLinkProps> element={Link} to="/about">
 							About
 						</HeaderMenuItem>
-						<HeaderMenuItem href="#">
+						<HeaderMenuItem<RRLinkProps> element={Link} to="/contact">
 							Contact
 						</HeaderMenuItem>
 					</HeaderSideNavItems>
