@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, SyntheticEvent, useState} from 'react';
 import {
 	TextArea,
 	Button
 } from '@carbon/react';
 import './Checker.scss';
 
-function Checker(props: any): JSX.Element {
-	const [inputContent, setInputContent] = useState<string>('');
+function Checker(props: CheckerPropsType): JSX.Element {
+	//ToDo:// remove default context after developemnt
+	const [inputContent, setInputContent] = useState<string>(`The report found that people living in countries with liberal democratic governments are “more likely to worry about misinformation than people in countries without or with limited democratic institutions,” and that fake news concerns were higher among people with higher education levels.
+    He was withheld while we were being fed. New regulations were proposed.	`);
 
-	const onTextInputChange = (event: any) => {
-		setInputContent(event.target.value);
+	const onTextInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+		const target = (event as SyntheticEvent).target;
+		setInputContent((target as HTMLInputElement).value);
 	};
 
 	return (
@@ -35,5 +38,7 @@ function Checker(props: any): JSX.Element {
 		</div>
 	);
 }
-
+type CheckerPropsType = {
+    onClickSubmit:  (inputValue: string) => void;
+}
 export default Checker;

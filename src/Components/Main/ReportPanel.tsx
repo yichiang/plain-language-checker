@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
 	Accordion,
 	AccordionItem
 } from '@carbon/react';
 import './ReportPanel.scss';
-import { FeedbackData, FeedbackType } from '../../Types';
+import { FeedbackData } from '../../Types';
 
 
 function ReportPanel(props: ReportPanelPropsType): JSX.Element {
@@ -13,29 +13,27 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 	return (
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
-			<p className='subtitle'>We found {items.length} feedback items.</p>
+			<p className='subtitle'>We found {items.length} Feedback items</p>
 			<Accordion className='report-list'>
 				{items.map( (item, index) => {
-					const {name, feedbackType, link, linkText, description, matchedString, stringSuggestion, paragraphNumber, sentenceNumber } = item;
+					const {name, 
+						matchedString,
+						paragraphNumber,
+						sentenceNumber,
+						stringSuggestion, 
+						description } = item;
 					return (
 
 						<AccordionItem 
 							key={index}
-							title={`${feedbackType}: ${name}`}>
+							title={
+								`${name} - ${matchedString} 
+                                at paragraph ${paragraphNumber}, 
+                                sentence ${sentenceNumber}`}>
 							<p>
-								{ `Location: Paragraph ${paragraphNumber}, Sentence ${sentenceNumber}` }
-							</p>
-							<p>
-								{ `Description: ${description}` }
-							</p>
-							<p>
-								{ `More information at <a href="${link}">${linkText}</a>` }
-							</p>
-							<p>
-								{ `Matched word(s): ${matchedString}` }
-							</p>
-							<p>
-								{ `Suggestion: ${stringSuggestion}` }
+								{description}
+
+								{stringSuggestion}
 							</p>
 						</AccordionItem>
 
