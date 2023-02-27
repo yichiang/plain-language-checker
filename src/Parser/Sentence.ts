@@ -55,6 +55,10 @@ export class Sentence {
 		return this.sentenceNumber;
 	}
 
+	getWords (): string[] {
+		return this.words;
+	}
+
 	getWordsCount (): number {
 		return this.wordsCount;
 	}

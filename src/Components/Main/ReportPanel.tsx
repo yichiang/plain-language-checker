@@ -13,7 +13,7 @@ function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 	return (
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
-			<p className='subtitle'>We found {items.length} additional words</p>
+			<p className='subtitle'>We found {items.length} Feedback items</p>
 			<Accordion className='report-list'>
 				{items.map( (item, index) => {
 					const {name, 
