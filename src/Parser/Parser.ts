@@ -4,6 +4,9 @@ import { Feedback } from './Sentence';
 import checkPassive from './Validator/PassiveVoice';
 import { wordListArray } from './WordList';
 
+const maxNumberOfWordsInSentence = 35;
+const maxNumberOfSentencesInParaghraph = 10;
+
 export class Text {
 	private text: string;  // can be removed, leave for debugging
 	private paragraphs: Paragraph[];
@@ -143,8 +146,36 @@ export class Text {
 				// Check for passive voice
 				checkPassive(sentence);
 
-				// TODO: Check for sentence and paragraph length here
+				// Check for sentence length
+				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
+				{
+					sentence.getSuggestions().push(new Suggestion(
+						'Long sentence', 
+						'https://www.plainlanguage.gov/guidelines/concise/write-short-sentences/',
+						'Write short sentences - Plain language guidelines',
+						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over the recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
+						sentence.getParagraphNumber(),
+						sentence.getSentenceNumber(),
+						sentence.getText()));
+				}
 
+			}
+
+			// Check for paragraph length
+			if (paragraph.getSentencesCount() > maxNumberOfSentencesInParaghraph)
+			{
+				// We need to insert the suggestion to a sentence so grab the first one, also grab the text from
+				// that sentence for the matched string
+				const sentenceToInsertSuggestion = paragraph.getSentences()[0];
+				const textToInclude = sentenceToInsertSuggestion.getText();
+				sentenceToInsertSuggestion.getSuggestions().push(new Suggestion(
+					'Long paragraph', 
+					'https://www.plainlanguage.gov/guidelines/concise/write-short-paragraphs/',
+					'Write short paragraphs - Plain language guidelines',
+					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over the recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
+					paragraph.getParagraphNumber(),
+					sentenceToInsertSuggestion.getSentenceNumber(),
+					textToInclude));
 			}
 		}
 	}

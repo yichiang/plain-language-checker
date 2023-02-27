@@ -5,7 +5,6 @@ export class Paragraph {
 	private text: string;  // can be removed, leave for debugging
 	private paragraphNumber: number;
 	private sentences: Sentence[];
-	private sentencesCount: number;
 	constructor(text: string, paragraphNumber: number) {
 		this.text = text;
 		// Paragraph number, starts at 1 for the first paragraph in the text
@@ -18,17 +17,19 @@ export class Paragraph {
 			this.sentences.push(new Sentence(sentenceText, idx, this.paragraphNumber));
 			idx++;
 		}
-		// Counters
-		this.sentencesCount = this.sentences.length;
 	}
 
 	// Getters
+	getParagraphNumber (): number {
+		return this.paragraphNumber;
+	}
+
 	getSentences (): Sentence[] {
 		return this.sentences;
 	}
 
 	getSentencesCount (): number {
-		return this.sentencesCount;
+		return this.sentences.length;
 	}
 
 	getWordsCount (): number {
