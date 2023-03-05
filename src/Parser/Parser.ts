@@ -2,6 +2,7 @@ import { FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
 import checkPassive from './Validator/PassiveVoice';
+import reportSlashUsage from './Validator/SlashChecker';
 import reportSyllableHighCount from './Validator/SyllableCount';
 import { wordListArray } from './WordList';
 
@@ -150,6 +151,8 @@ export class Text {
 				//Check for syllable
 				reportSyllableHighCount(sentence);
 
+				//Check for certain slash usage
+				reportSlashUsage(sentence);
 
 				// Check for sentence length
 				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
