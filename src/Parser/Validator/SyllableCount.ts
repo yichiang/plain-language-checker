@@ -8,7 +8,7 @@ export default function reportSyllableHighCount(sentence: Sentence) {
 	const issues: {word: string, count: number}[] = [];
 	sentence.getWords().forEach(word => {
 		const count = syllable(word);
-		var matchUrls = foundUrls(word);
+		const matchUrls = foundUrls(word);
 		if((!matchUrls?.length) && count >= highCount) {
 			issues.push({word: word, count: count});
 		}

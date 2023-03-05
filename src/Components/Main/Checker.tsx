@@ -8,6 +8,11 @@ import './Checker.scss';
 function Checker(props: CheckerPropsType): JSX.Element {
 	//ToDo:// remove default context after developemnt
 	const [inputContent, setInputContent] = useState<string>(`
+	The Americans with Disabilities Act of 1990 or ADA is a civil rights law that prohibits discrimination based on disability.
+
+	ADA is important. We need to know how the UI will look like for BLV users.
+
+
 	Use this link to verify the plain language usage: https://yichiang.github.io/plain-language-checker/#/.
 
 	The report found that people living in countries with liberal democratic governments are “more likely to worry about misinformation than people in countries without or with limited democratic institutions,” and that fake news concerns were higher among people with higher education levels. 
