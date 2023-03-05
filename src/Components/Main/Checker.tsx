@@ -7,7 +7,10 @@ import './Checker.scss';
 
 function Checker(props: CheckerPropsType): JSX.Element {
 	//ToDo:// remove default context after developemnt
-	const [inputContent, setInputContent] = useState<string>(`The report found that people living in countries with liberal democratic governments are “more likely to worry about misinformation than people in countries without or with limited democratic institutions,” and that fake news concerns were higher among people with higher education levels. 
+	const [inputContent, setInputContent] = useState<string>(`
+	Use this link to verify the plain language usage: https://yichiang.github.io/plain-language-checker/#/.
+
+	The report found that people living in countries with liberal democratic governments are “more likely to worry about misinformation than people in countries without or with limited democratic institutions,” and that fake news concerns were higher among people with higher education levels. 
 
 	He was withheld while we were being fed. New regulations were proposed.	
 		

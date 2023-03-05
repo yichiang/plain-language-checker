@@ -1,13 +1,15 @@
 import { syllable } from 'syllable';
 import { Suggestion } from '../Parser';
 import { Sentence } from '../Sentence';
+import { foundUrls } from './helper';
 
 const highCount = 5;
 export default function reportSyllableHighCount(sentence: Sentence) {
 	const issues: {word: string, count: number}[] = [];
 	sentence.getWords().forEach(word => {
 		const count = syllable(word);
-		if(count >= highCount) {
+		var matchUrls = foundUrls(word);
+		if((!matchUrls?.length) && count >= highCount) {
 			issues.push({word: word, count: count});
 		}
 	});
