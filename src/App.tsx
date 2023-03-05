@@ -68,7 +68,6 @@ function App(): JSX.Element {
 					onClickSubmit={onClickSubmit}
 				/>
 				{possibleProblemList && <ReportPanelList items={possibleProblemList}/>}
-				{possibleProblemList && <ReportPanel items={possibleProblemList}/>}
 			</div>
 		</div>
 	);
