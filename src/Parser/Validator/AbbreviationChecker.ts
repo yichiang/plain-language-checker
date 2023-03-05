@@ -55,7 +55,7 @@ export default function reportAbbreviation(sentence: Sentence) {
 
 	if(definteList.length > 0) {
 		sentence.getSuggestions().push(new Kudo(
-			'Minimize abbreviations & Good to definite abbreviations', 
+			'Nice to definite abbreviations', 
 			'https://www.plainlanguage.gov/guidelines/words/minimize-abbreviations/',
 			'Minimize abbreviations - Plain language guidelines',
 			`The sentence contains the abbreviations without definition: ${definteList}.`,
