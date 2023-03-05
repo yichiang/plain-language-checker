@@ -23,7 +23,7 @@ export default function reportSyllableHighCount(sentence: Sentence, checkForBy =
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			wordList || '',
-			`consider replacing "${wordList}" with simple word`
+			`Consider replacing "${wordList}" with simple word.`
 		));        
 	}
 

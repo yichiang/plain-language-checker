@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 import TextInput from './Components/TextInput/TextInput';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
+import ReportPanelList from './Components/Main/ReportPanelList';
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
@@ -66,6 +67,7 @@ function App(): JSX.Element {
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
+				{possibleProblemList && <ReportPanelList items={possibleProblemList}/>}
 				{possibleProblemList && <ReportPanel items={possibleProblemList}/>}
 			</div>
 		</div>
