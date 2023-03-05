@@ -23,11 +23,11 @@ jobs:
 
     - name: Build
       run: |
-        npm install
+        yarn install
 
     - name: Deploy
       run: |
         git remote set-url origin https://yichiang:$token@github.com/yichiang/plain-language-checker
         git config --global user.email "yi_chiang@outlook.com"
         git config --global user.name "Yi"
-        npm run deploy
+        yarn run deploy
