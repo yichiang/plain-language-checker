@@ -84,7 +84,7 @@ export class WordList {
 function validatorStartsWith (sentence: string, wordsToSearch: string): boolean {
 	// Check if the transition word happened at the beginning of the string
 	const re = new RegExp(wordsToSearch + '\\b', 'i');
-	return sentence.toLowerCase().search(re) == 0;
+	return sentence.search(re) == 0;
 }
 
 // Careful with the function below since it will match substring. Example: "Sometimes" will match "so".
@@ -92,11 +92,16 @@ function validatorStartsWith (sentence: string, wordsToSearch: string): boolean 
 // 	return sentence.toLowerCase().startsWith(wordsToSearch.toLowerCase());
 // }
 
-// function validatorIncludes (sentence: string, wordsToSearch: string): boolean {
-// 	return sentence.toLowerCase().includes(wordsToSearch.toLowerCase());
-// }
+function validatorIncludes (sentence: string, wordsToSearch: string): boolean {
+	const re = new RegExp('\\b' + wordsToSearch + '\\b', 'i');
+	return sentence.search(re) >= 0;
+}
 
+/////////////////////////////////////////////
 // WordList instantiation
+/////////////////////////////////////////////
+
+// Transition words
 const transitionWordsAdd = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
@@ -167,6 +172,70 @@ const transitionWordsSequencing = new WordList(
 	new Set<string>(['first', 'second', 'third', 'fourth', 'then', 'next', 'finally']),
 	validatorStartsWith);
 
+// Prepositions
+const prepositions = new WordList(
+	'Preposition',
+	FeedbackType.Issue,
+	'Consider replacing the word(s) above with the suggestion to make your text more concise.',
+	'https://www.plainlanguage.gov/guidelines/concise/',
+	'Be concise - Plain language guidelines',
+	new Map<string, string>([
+		['a number of', 'several, a few, many'],
+		['a sufficient number of', 'enough'],
+		['at this point in time', 'now'],
+		['is able to', 'can'],
+		['are able to', 'can'],
+		['on a monthly basis', 'monthly'],
+		['on a weekly basis', 'weekly'],
+		['on a daily basis', 'daily'],
+		['on the ground that', 'because'],
+		['be responsible for', 'must'],
+		['in order to', 'to']
+	]),
+	new Set<string>(),
+	validatorIncludes);
+
+const prepositions2 = new WordList(
+	'Preposition',
+	FeedbackType.Issue,
+	'Consider deleting the word(s) above to make your text more concise.',
+	'https://www.plainlanguage.gov/guidelines/concise/',
+	'Be concise - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['an amount of']),
+	validatorIncludes);
+
+// Doublets and triplets
+const doubletsTriplets = new WordList(
+	'Doublets and triplets',
+	FeedbackType.Issue,
+	'Please do not use different words that mean the same thing.',
+	'https://www.plainlanguage.gov/guidelines/concise/',
+	'Be concise - Plain language guidelines',
+	new Map<string, string>([
+		['due and payable', 'due'],
+		['cease and desist', 'stop'],
+		['desist and cease', 'stop'],
+		['knowledge and information', 'knowledge, information'],
+		['information and knowledge', 'knowledge, information'],
+		['begin and commence', 'start'],
+		['commence and begin', 'start']
+	]),
+	new Set<string>(),
+	validatorIncludes);
+
+// Excess Modifiers
+const excessModifiers = new WordList(
+	'Excess modifiers',
+	FeedbackType.Suggestion,
+	'Please review the excess modifier and make sure it is necessary.',
+	'https://www.plainlanguage.gov/guidelines/concise/',
+	'Be concise - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['absolutely', 'actually', 'completely', 'really', 'quite', 'totally', 'total', 'very', 'somewhat', 'particularly']),
+	validatorIncludes);
+
+
 export const wordListArray: WordList[] = [
 	transitionWordsAdd,
 	transitionWordsExample,
@@ -174,5 +243,9 @@ export const wordListArray: WordList[] = [
 	transitionWordsResult,
 	transitionWordsContrasting,
 	transitionWordsSummingUp,
-	transitionWordsSequencing
+	transitionWordsSequencing,
+	prepositions,
+	prepositions2,
+	doubletsTriplets,
+	excessModifiers
 ];
