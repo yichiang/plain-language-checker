@@ -10,7 +10,7 @@ function Checker(props: CheckerPropsType): JSX.Element {
 	const [inputContent, setInputContent] = useState<string>(`
 	The Americans with Disabilities Act of 1990 or ADA is a civil rights law that prohibits discrimination based on disability.
 
-	ADA is important. We need to know how the UI will look like for BLV users.
+	ADA is important. We need to know the impact on BLV users.
 
 
 	Use this link to verify the plain language usage: https://yichiang.github.io/plain-language-checker/#/.
