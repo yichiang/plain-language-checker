@@ -256,6 +256,17 @@ const businessJargon = new WordList(
 	new Set<string>(['Thinking outside the box', 'Value added', 'Best practice', 'For all intents and purposes', 'Touch base', 'Integrating quality solutions', 'Promoting an informed and synergistic teams', 'Strategically engaging departments']),
 	validatorIncludes);
 
+// Shall and must
+const shallMust = new WordList(
+	'Use “must” to indicate requirements',
+	FeedbackType.Issue,
+	'Please avoid using "shall" and use "must" instead.',
+	'https://www.plainlanguage.gov/guidelines/conversational/use-must-to-indicate-requirements/',
+	'Use “must” to indicate requirements - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['shall']),
+	validatorIncludes);
+
 
 export const wordListArray: WordList[] = [
 	transitionWordsAdd,
@@ -270,5 +281,6 @@ export const wordListArray: WordList[] = [
 	doubletsTriplets,
 	excessModifiers,
 	legalJargon,
-	businessJargon
+	businessJargon,
+	shallMust
 ];
