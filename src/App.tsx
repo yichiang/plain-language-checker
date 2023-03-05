@@ -17,7 +17,6 @@ function App(): JSX.Element {
 	const [possibleSuggestionList, setPossibleSuggestionList] = useState<string[]>([]);
 
 	const onClickSubmit = (article: string) => {
-		console.log(article);
 
 		const parsedText = new Text(article);
 

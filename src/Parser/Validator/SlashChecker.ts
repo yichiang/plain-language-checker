@@ -1,12 +1,21 @@
 import { Suggestion } from '../Parser';
 import { Sentence } from '../Sentence';
+import { foundUrls } from './helper';
 
 const wordList = ['and/or', 'or/and', 'w/o', '/'];
 export default function reportSlashUsage(sentence: Sentence) {
 	const match: string[] = [];
+	const text = sentence.getText();
 	wordList.forEach(word => {
-		if(sentence.getText().includes(word)) {
-			match.push(word);
+		if(text.includes(word)) {
+			if(word === '/') {
+				var matchUrls = foundUrls(text);
+				if(!matchUrls?.length) {
+					match.push(word);
+				}
+			} else {
+				match.push(word);
+			}
 		}
 	});
 	if (match.length > 1 && match[match.length-1] === '/')
@@ -29,3 +38,4 @@ export default function reportSlashUsage(sentence: Sentence) {
 	}
 
 }
+
