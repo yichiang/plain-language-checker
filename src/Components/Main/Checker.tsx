@@ -8,7 +8,12 @@ import './Checker.scss';
 function Checker(props: CheckerPropsType): JSX.Element {
 	//ToDo:// remove default context after developemnt
 	const [inputContent, setInputContent] = useState<string>(`The report found that people living in countries with liberal democratic governments are “more likely to worry about misinformation than people in countries without or with limited democratic institutions,” and that fake news concerns were higher among people with higher education levels.
-    He was withheld while we were being fed. New regulations were proposed.	`);
+    He was withheld while we were being fed. New regulations were proposed.	
+	
+	Statistical classification is the process of assigning observations to a category or set of labels. This is a basic problem in statistics, science and artificial intelligence. For example, a self-driving car that needs to decide if a moving object is a pedestrian, car, bicycle or other entity such as leaves being blown by the wind. An algorithm that performs statistical classification is known as a classifier. However, I don't think finding these solutions means an end to all our troubles.
+
+	A sailor's life is indeed a hard life.
+	`);
 
 	const onTextInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		const target = (event as SyntheticEvent).target;

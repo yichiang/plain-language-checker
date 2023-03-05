@@ -2,6 +2,7 @@ import { FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
 import checkPassive from './Validator/PassiveVoice';
+import reportSyllableHighCount from './Validator/SyllableCount';
 import { wordListArray } from './WordList';
 
 const maxNumberOfWordsInSentence = 35;
@@ -145,6 +146,10 @@ export class Text {
 
 				// Check for passive voice
 				checkPassive(sentence);
+
+				//Check for syllable
+				reportSyllableHighCount(sentence);
+
 
 				// Check for sentence length
 				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
