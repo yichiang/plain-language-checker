@@ -74,6 +74,16 @@ export class WordList {
 				{
 					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch));
 				}
+				if (this.name === 'Example used')
+				{
+					// Increase example count of the sentence
+					sentence.exampleFound();
+				}
+				else if (this.name === 'Transition words')
+				{
+					// Increase transition words count of the sentence
+					sentence.transitionWordFound();
+				}
 			}
 		}
 
@@ -95,6 +105,10 @@ function validatorStartsWith (sentence: string, wordsToSearch: string): boolean 
 function validatorIncludes (sentence: string, wordsToSearch: string): boolean {
 	const re = new RegExp('\\b' + wordsToSearch + '\\b', 'i');
 	return sentence.search(re) >= 0;
+}
+
+function validatorIncludesNoRegex (sentence: string, wordsToSearch: string): boolean {
+	return sentence.toLowerCase().includes(wordsToSearch.toLowerCase());
 }
 
 /////////////////////////////////////////////
@@ -267,6 +281,30 @@ const shallMust = new WordList(
 	new Set<string>(['shall']),
 	validatorIncludes);
 
+// Examples
+const examples = new WordList(
+	'Latin abbreviation',
+	FeedbackType.Issue,
+	'Please consider changing the word above with the suggestion below.',
+	'https://www.plainlanguage.gov/guidelines/conversational/use-examples/',
+	'Use examples - Plain language guidelines',
+	new Map<string, string>([
+		['e.g.', 'for example, for instance, such as'],
+		['i.e.', 'that is']
+	]),
+	new Set<string>(),
+	validatorIncludesNoRegex);
+
+const examples2 = new WordList(
+	'Example used',
+	FeedbackType.Kudo,
+	'Way to go! Examples are a great way to clarify complex concepts.',
+	'https://www.plainlanguage.gov/guidelines/conversational/use-examples/',
+	'Use examples - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['example', 'for instance', 'such as']),
+	validatorIncludes);
+
 
 export const wordListArray: WordList[] = [
 	transitionWordsAdd,
@@ -282,5 +320,7 @@ export const wordListArray: WordList[] = [
 	excessModifiers,
 	legalJargon,
 	businessJargon,
-	shallMust
+	shallMust,
+	examples,
+	examples2
 ];

@@ -42,6 +42,15 @@ export class Sentence {
 		this.kudos = [];
 	}
 
+	// Increase counters
+	exampleFound(): void {
+		this.examplesCount++;
+	}
+
+	transitionWordFound(): void {
+		this.transitionWordsCount++;
+	}
+
 	// Getters
 	getText (): string {
 		return this.text;
