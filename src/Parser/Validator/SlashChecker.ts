@@ -9,7 +9,7 @@ export default function reportSlashUsage(sentence: Sentence) {
 	wordList.forEach(word => {
 		if(text.includes(word)) {
 			if(word === '/') {
-				var matchUrls = foundUrls(text);
+				const matchUrls = foundUrls(text);
 				if(!matchUrls?.length) {
 					match.push(word);
 				}

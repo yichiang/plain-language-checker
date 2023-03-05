@@ -1,6 +1,7 @@
 import { FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
+import reportAbbreviation from './Validator/AbbreviationChecker';
 import checkPassive from './Validator/PassiveVoice';
 import reportSlashUsage from './Validator/SlashChecker';
 import reportSyllableHighCount from './Validator/SyllableCount';
@@ -32,6 +33,10 @@ export class Text {
 	}
 
 	// Getters
+	getArticle (): Text {
+		return this;
+	}
+
 	getParagraphs (): Paragraph[] {
 		return this.paragraphs;
 	}
@@ -146,7 +151,9 @@ export class Text {
 				{
 					wordList.processSentence(sentence);
 				}
-
+				// Check for abbreviations
+				reportAbbreviation(sentence);
+			
 				// Check for passive voice
 				checkPassive(sentence);
 
