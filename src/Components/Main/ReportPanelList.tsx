@@ -39,9 +39,9 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 								<ListItem>
 								Description : {description}
 								</ListItem>
-								<ListItem>
+								{stringSuggestion && <ListItem>
 								Suggestions : {stringSuggestion}
-								</ListItem>
+								</ListItem>}
 								<ListItem>
 								Reference : <Link href={link}>{linkText}</Link>
 								</ListItem>

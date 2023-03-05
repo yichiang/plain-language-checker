@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Introudction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://yichiang.github.io/plain-language-checker
+
 
 ## Available Scripts
 
