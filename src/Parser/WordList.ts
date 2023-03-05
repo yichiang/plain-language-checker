@@ -235,6 +235,27 @@ const excessModifiers = new WordList(
 	new Set<string>(['absolutely', 'actually', 'completely', 'really', 'quite', 'totally', 'total', 'very', 'somewhat', 'particularly']),
 	validatorIncludes);
 
+// Jargon
+const legalJargon = new WordList(
+	'Legal jargon',
+	FeedbackType.Issue,
+	'Please avoid using legal jargon as it is not clear to most people.',
+	'https://www.plainlanguage.gov/guidelines/words/avoid-jargon/',
+	'Avoid jargon - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['above-mentioned', 'aforementioned', 'foregoing', 'henceforth', 'hereafter', 'hereby', 'heretofore', 'herewith', 'thereafter', 'thereof', 'therewith', 'whatsoever', 'whereat', 'wherein', 'whereof']),
+	validatorIncludes);
+
+const businessJargon = new WordList(
+	'Business jargon',
+	FeedbackType.Issue,
+	'Please avoid using business jargon as it is not clear to most people.',
+	'https://www.plainlanguage.gov/guidelines/words/avoid-jargon/',
+	'Avoid jargon - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['Thinking outside the box', 'Value added', 'Best practice', 'For all intents and purposes', 'Touch base', 'Integrating quality solutions', 'Promoting an informed and synergistic teams', 'Strategically engaging departments']),
+	validatorIncludes);
+
 
 export const wordListArray: WordList[] = [
 	transitionWordsAdd,
@@ -247,5 +268,7 @@ export const wordListArray: WordList[] = [
 	prepositions,
 	prepositions2,
 	doubletsTriplets,
-	excessModifiers
+	excessModifiers,
+	legalJargon,
+	businessJargon
 ];
