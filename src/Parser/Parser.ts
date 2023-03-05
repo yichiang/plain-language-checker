@@ -7,7 +7,7 @@ import reportSyllableHighCount from './Validator/SyllableCount';
 import { wordListArray } from './WordList';
 
 const maxNumberOfWordsInSentence = 35;
-const maxNumberOfSentencesInParaghraph = 10;
+const maxNumberOfSentencesInParaghraph = 7;
 
 export class Text {
 	private text: string;  // can be removed, leave for debugging
@@ -18,6 +18,8 @@ export class Text {
 		this.text = text.replace(/[\r\n]+/gi, '\n');
 		// Remove trailing linebreaks
 		this.text = this.text.replace(/[\r\n]+$/gi, '').trim();
+		// Convert tabs to spaces
+		this.text = this.text.replace(/[\t]+/gi, ' ');
 		// Split in paragraphs
 		const paragraphsText = this.text.split('\n');
 		this.paragraphs = [];
