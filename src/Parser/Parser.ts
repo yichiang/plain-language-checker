@@ -157,10 +157,10 @@ export class Text {
 				// Check for passive voice
 				checkPassive(sentence);
 
-				//Check for syllable
+				// Check for syllable
 				reportSyllableHighCount(sentence);
 
-				//Check for certain slash usage
+				// Check for certain slash usage
 				reportSlashUsage(sentence);
 
 				// Check for sentence length
