@@ -41,11 +41,11 @@ export default function reportAbbreviation(sentence: Sentence) {
 			'Minimize abbreviations', 
 			'https://www.plainlanguage.gov/guidelines/words/minimize-abbreviations/',
 			'Minimize abbreviations - Plain language guidelines',
-			`The sentence contains the abbreviations without definition: ${wordList}.`,
+			`The sentence contains the following abbreviations without definition: ${wordList}.`,
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			wordList || '',
-			`Please consider explains "${wordList}".`
+			`Please consider adding a definition for "${wordList}".`
 		));        
 	}
 	const definteList = Object.keys(possibleWordsWithDef)
@@ -55,10 +55,10 @@ export default function reportAbbreviation(sentence: Sentence) {
 
 	if(definteList.length > 0) {
 		sentence.getSuggestions().push(new Kudo(
-			'Nice to definite abbreviations', 
+			'Found the definition of an abbreviation', 
 			'https://www.plainlanguage.gov/guidelines/words/minimize-abbreviations/',
 			'Minimize abbreviations - Plain language guidelines',
-			`The sentence contains the abbreviations without definition: ${definteList}.`,
+			`The sentence contains an abbreviation with a definition: ${definteList}. Remember to keep abbreviations to a minimum.`,
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			definteList || ''
