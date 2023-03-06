@@ -14,7 +14,7 @@ export default function reportSyllableHighCount(sentence: Sentence) {
 		}
 	});
 	const words = issues.map(issue=> `${issue.word}`);
-	const wordList = words.join(',');
+	const wordList = words.join(', ');
 	if(issues.length > 0) {
 		sentence.getSuggestions().push(new Suggestion(
 			'Use simple words and phrases', 

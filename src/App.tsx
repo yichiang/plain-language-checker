@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
-import { FeedbackData } from './Types';
+import { FeedbackData, GeneralFeedbackData } from './Types';
 import { Text } from './Parser/Parser';
 import { Route, Switch } from 'react-router-dom';
 import TextInput from './Components/TextInput/TextInput';
@@ -14,7 +14,7 @@ import { validateExampleCount, validateTransitionWordsCount } from './Parser/Val
 
 function App(): JSX.Element {
 	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
-	const [possibleSuggestionList, setPossibleSuggestionList] = useState<string[]>([]);
+	const [possibleSuggestionList, setPossibleSuggestionList] = useState<GeneralFeedbackData[]>([]);
 
 	const onClickSubmit = (article: string) => {
 
@@ -56,9 +56,9 @@ function App(): JSX.Element {
 		setPossibleProblemList(list);
 
 		// Check that examples and transition words are used
-		const examplesString = validateExampleCount(parsedText.getExamplesCount(), parsedText.getParagraphsCount());
-		const transitionWordsString = validateTransitionWordsCount(parsedText.getTransitionWordsCount(), parsedText.getParagraphsCount());
-		setPossibleSuggestionList([examplesString, transitionWordsString]);
+		const examplesFeedback = validateExampleCount(parsedText.getExamplesCount(), parsedText.getParagraphsCount());
+		const transitionWordsFeedback = validateTransitionWordsCount(parsedText.getTransitionWordsCount(), parsedText.getParagraphsCount());
+		setPossibleSuggestionList([examplesFeedback, transitionWordsFeedback]);
 	};
 
 	return (

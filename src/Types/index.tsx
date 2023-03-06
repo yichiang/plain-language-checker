@@ -17,3 +17,9 @@ export type FeedbackData = {
     paragraphNumber: number;
     sentenceNumber: number;
 }
+
+export type GeneralFeedbackData = {
+    description: string;
+    link: string;
+    linkText: string;
+}
