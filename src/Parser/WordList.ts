@@ -458,7 +458,7 @@ const simpleWordsAndPhrases = new WordList(
 		['males', 'men'],
 		['maximum', 'greatest, largest, most'],
 		['methodology', 'method'],
-		['minimize', 'decrease, method'],
+		['minimize', 'decrease'],
 		['minimum', 'least, smallest'],
 		['modify', 'change'],
 		['monitor', 'check, watch'],
