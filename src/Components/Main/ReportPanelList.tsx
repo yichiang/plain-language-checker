@@ -6,14 +6,15 @@ import {
 } from '@carbon/react';
 import './ReportPanel.scss';
 import { FeedbackData } from '../../Types';
-
+import { Paragraph } from '../../Parser/Paragraph';
 
 function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 	const {items} = props;
 	console.log(items);
+	const {paragraphs} = props;
 	return (
 		<div className='report-panel'>
-			<h2>Suggestions</h2>
+			<h2>Specific comments</h2>
 			<p className='subtitle'>We found {items.length} Feedback items</p>
 			<UnorderedList className='report-unordered-list'>
 				{items.map( (item, index) => {
@@ -28,25 +29,28 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 						linkText
 					} = item;
 					return (
+						<>
+							{paragraphs && !paragraphs[paragraphNumber-1].getSentences()[sentenceNumber-1].getHasBeenPrinted() && <ListItem key={2*index}>
+								<strong> Paragraph {paragraphNumber}, sentence {sentenceNumber}: </strong> {paragraphs && paragraphs[paragraphNumber-1].getSentences()[sentenceNumber-1].getText()}
+							</ListItem>}
+							{ paragraphs && paragraphs[paragraphNumber-1].getSentences()[sentenceNumber-1].markPrinted() }
 
-						<ListItem key={index}>
-							[{feedbackType}] {name}
-							<strong> {matchedString} </strong> 
-                                at paragraph {paragraphNumber}, 
-                                sentence {sentenceNumber}
-
-							<UnorderedList nested>
-								<ListItem>
-								Description : {description}
-								</ListItem>
-								{stringSuggestion && <ListItem>
-								Suggestions : {stringSuggestion}
-								</ListItem>}
-								<ListItem>
-								Reference : <Link href={link}>{linkText}</Link>
-								</ListItem>
-							</UnorderedList>
-						</ListItem>
+							<ListItem key={2*index+1}>
+								[{feedbackType}] {name}
+								<strong> {matchedString} </strong>
+								<UnorderedList nested>
+									<ListItem>
+									Description : {description}
+									</ListItem>
+									{stringSuggestion && <ListItem>
+									Suggestions : {stringSuggestion}
+									</ListItem>}
+									<ListItem>
+									Reference : <Link href={link}>{linkText}</Link>
+									</ListItem>
+								</UnorderedList>
+							</ListItem>
+						</>
 
 					);
 
@@ -57,6 +61,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 }
 
 type ReportPanelListPropsType = {
-    items: FeedbackData[]
+    items: FeedbackData[],
+	paragraphs: Paragraph[] | undefined
 }
 export default ReportPanelList;

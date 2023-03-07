@@ -1,4 +1,4 @@
-import { FeedbackType } from '../Types/index';
+import { FeedbackData, FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
 import reportAbbreviation from './Validator/AbbreviationChecker';
@@ -139,6 +139,15 @@ export class Text {
 		return count;
 	}
 
+	getFeedback (): FeedbackData[] {
+		let result: FeedbackData[] = [];
+		for (const paragraph of this.paragraphs)
+		{
+			result = result.concat(paragraph.getFeedback()); 
+		}
+		return result;
+	}
+
 	// Function that populates the Feedback items, it will process the text.
 	parseText (): void {
 		// Process each sentence, looking for Feedback
@@ -167,13 +176,13 @@ export class Text {
 				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
 				{
 					sentence.getSuggestions().push(new Suggestion(
-						'Long sentence', 
+						'', 
 						'https://www.plainlanguage.gov/guidelines/concise/write-short-sentences/',
 						'Write short sentences - Plain language guidelines',
 						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over the recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
 						sentence.getParagraphNumber(),
 						sentence.getSentenceNumber(),
-						sentence.getText()));
+						'Long sentence'));
 				}
 
 			}
@@ -184,15 +193,15 @@ export class Text {
 				// We need to insert the suggestion to a sentence so grab the first one, also grab the text from
 				// that sentence for the matched string
 				const sentenceToInsertSuggestion = paragraph.getSentences()[0];
-				const textToInclude = sentenceToInsertSuggestion.getText();
+				// // const textToInclude = sentenceToInsertSuggestion.getText();
 				sentenceToInsertSuggestion.getSuggestions().push(new Suggestion(
-					'Long paragraph', 
+					'', 
 					'https://www.plainlanguage.gov/guidelines/concise/write-short-paragraphs/',
 					'Write short paragraphs - Plain language guidelines',
 					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over the recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
 					paragraph.getParagraphNumber(),
 					sentenceToInsertSuggestion.getSentenceNumber(),
-					textToInclude));
+					'Long paragraph'));
 			}
 		}
 	}

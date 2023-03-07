@@ -13,6 +13,7 @@ export class Sentence {
 	private issues: Issue[];
 	private suggestions: Suggestion[];
 	private kudos: Kudo[];
+	private hasBeenPrinted: boolean;
 
 	constructor(text: string, sentenceNumber: number, paragraphNumber: number) {
 		// Handle multiple whitespaces
@@ -40,6 +41,7 @@ export class Sentence {
 		this.issues = [];
 		this.suggestions = [];
 		this.kudos = [];
+		this.hasBeenPrinted = false;
 	}
 
 	// Increase counters
@@ -49,6 +51,11 @@ export class Sentence {
 
 	transitionWordFound(): void {
 		this.transitionWordsCount++;
+	}
+
+	// Called by the UI when it has been included in the report
+	markPrinted (): void {
+		this.hasBeenPrinted = true;
 	}
 
 	// Getters
@@ -102,6 +109,27 @@ export class Sentence {
 
 	getKudosCount (): number {
 		return this.kudos.length;
+	}
+
+	getHasBeenPrinted (): boolean {
+		return this.hasBeenPrinted;
+	}
+
+	getFeedback (): FeedbackData[] {
+		const result: FeedbackData[] = [];
+		for (const issue of this.getIssues())
+		{
+			result.push(issue.getData());
+		}
+		for (const suggestion of this.getSuggestions())
+		{
+			result.push(suggestion.getData());
+		}
+		for (const kudo of this.getKudos())
+		{
+			result.push(kudo.getData());
+		}
+		return result;
 	}
 
 }

@@ -13,8 +13,9 @@ import GeneralCommentsList from './Components/Main/GeneralCommentsList';
 import { validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
 
 function App(): JSX.Element {
-	const [possibleProblemList, setPossibleProblemList] = useState<FeedbackData[]>([]);
-	const [possibleSuggestionList, setPossibleSuggestionList] = useState<GeneralFeedbackData[]>([]);
+	const [specificFeedbackList, setSpecificFeedbackList] = useState<FeedbackData[]>([]);
+	const [generalFeedbackList, setGeneralFeedbackList] = useState<GeneralFeedbackData[]>([]);
+	const [parsedTextState, setParsedTextState] = useState<Text>();
 
 	const onClickSubmit = (article: string) => {
 
@@ -26,6 +27,7 @@ function App(): JSX.Element {
 
 		// Look for Feedback
 		parsedText.parseText();
+		setParsedTextState(parsedText);
 
 		// console.log('Issues count: ' + parsedText.getIssuesCount());
 		// console.log('Suggestions count: ' + parsedText.getSuggestionsCount());
@@ -40,25 +42,13 @@ function App(): JSX.Element {
 		// console.log('---------- Kudos ----------');
 		// console.log(parsedText.getKudos());
 
-		const list: FeedbackData[] = [];
-		for (const issue of parsedText.getIssues())
-		{
-			list.push(issue.getData());
-		}
-		for (const suggestion of parsedText.getSuggestions())
-		{
-			list.push(suggestion.getData());
-		}
-		for (const kudo of parsedText.getKudos())
-		{
-			list.push(kudo.getData());
-		}
-		setPossibleProblemList(list);
+		const list: FeedbackData[] = parsedText.getFeedback();
+		setSpecificFeedbackList(list);
 
 		// Check that examples and transition words are used
 		const examplesFeedback = validateExampleCount(parsedText.getExamplesCount(), parsedText.getParagraphsCount());
 		const transitionWordsFeedback = validateTransitionWordsCount(parsedText.getTransitionWordsCount(), parsedText.getParagraphsCount());
-		setPossibleSuggestionList([examplesFeedback, transitionWordsFeedback]);
+		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback]);
 	};
 
 	return (
@@ -73,8 +63,8 @@ function App(): JSX.Element {
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
-				{possibleProblemList && <ReportPanelList items={possibleProblemList}/>}
-				{possibleSuggestionList && <GeneralCommentsList items={possibleSuggestionList}/>}
+				{specificFeedbackList && <ReportPanelList items={specificFeedbackList} paragraphs={parsedTextState?.getParagraphs()}/>}
+				{generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
 			</div>
 		</div>
 	);
