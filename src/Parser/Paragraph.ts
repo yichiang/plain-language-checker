@@ -1,3 +1,4 @@
+import { FeedbackData } from '../Types/index';
 import { Issue, Kudo, Suggestion } from './Parser';
 import { Sentence } from './Sentence';
 
@@ -115,6 +116,15 @@ export class Paragraph {
 			count += sentence.getKudosCount();
 		}
 		return count;
+	}
+
+	getFeedback (): FeedbackData[] {
+		let result: FeedbackData[] = [];
+		for (const sentence of this.sentences)
+		{
+			result = result.concat(sentence.getFeedback()); 
+		}
+		return result;
 	}
 
 }
