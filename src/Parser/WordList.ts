@@ -40,6 +40,13 @@ export class WordList {
 		// If so, create a Feedback belonging to that sentence
 		// Note: Had to enable downlevelIteration in tsconfig.json.
 		// https://mariusschulz.com/blog/downlevel-iteration-for-es3-es5-in-typescript
+
+		// Transition words should only appear in the first sentence
+		if (this.name === 'Transition words' && sentence.getSentenceNumber() > 1)
+		{
+			return;
+		}
+
 		for (const [wordsToSearch, suggestionWords] of this.map) {
 			if (this.checkerFunction(sentence.getText(), wordsToSearch))
 			{
