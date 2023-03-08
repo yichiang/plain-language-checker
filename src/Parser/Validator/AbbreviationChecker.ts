@@ -15,7 +15,7 @@ export default function reportAbbreviation(sentence: Sentence) {
            
 			if (!possibleWords[word] && !possibleWordsWithDef[word]) {
 				/* eslint-disable no-useless-escape */
-				const endRegexStr = '\\s((with|of)+\\s)?';
+				const endRegexStr = '\\s((with|of|and|for)+\\s)?';
 				const regexExpressions = word.split('').map((char, index) => {
 					let str = '('+char+'\\w+)';
 					if(index !== word.length-1){
