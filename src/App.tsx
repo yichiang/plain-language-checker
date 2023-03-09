@@ -6,8 +6,6 @@ import { FeedbackData, GeneralFeedbackData } from './Types';
 import { Text } from './Parser/Parser';
 import { Route, Switch } from 'react-router-dom';
 import TextInput from './Components/TextInput/TextInput';
-import About from './Components/About/About';
-import Contact from './Components/Contact/Contact';
 import ReportPanelList from './Components/Main/ReportPanelList';
 import GeneralCommentsList from './Components/Main/GeneralCommentsList';
 import { validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
@@ -57,8 +55,6 @@ function App(): JSX.Element {
 			<div className='container'>
 				<Switch>
 					<Route exact path="/" component={TextInput} />
-					<Route exact path="/about" component={About} />
-					<Route exact path="/contact" component={Contact} />
 				</Switch>
 				<Checker
 					onClickSubmit={onClickSubmit}
