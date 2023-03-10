@@ -15,7 +15,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 	return (
 		<div className='report-panel'>
 			<h2>Specific comments</h2>
-			<p className='subtitle'>We found {items.length} Feedback items</p>
+			<p className='subtitle'>We found {items.length} feedback items.</p>
 			<UnorderedList className='report-unordered-list'>
 				{items.map( (item, index) => {
 					const {name, 
