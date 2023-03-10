@@ -559,6 +559,16 @@ const simpleWordsAndPhrases2 = new WordList(
 	new Set<string>(['addressees are requested', 'be advised', 'inter alia', 'in the process of', 'procure', 'take action to', 'the month of', 'the use of', 'on a regular basis', 'type']),
 	validatorIncludes);
 
+// Exceptions
+const exceptions = new WordList(
+	'Exceptions',
+	FeedbackType.Suggestion,
+	'Please review the sentence above and make sure you follow the guidelines for exceptions and conditions.',
+	'https://www.plainlanguage.gov/guidelines/organize/place-the-main-idea-before-exceptions-and-conditions/',
+	'Place the main idea before exceptions and conditions - Plain language guidelines',
+	new Map<string, string>(),
+	new Set<string>(['except', 'exception', 'unless', 'if']),
+	validatorIncludes);
 
 export const wordListArray: WordList[] = [
 	transitionWordsAdd,
@@ -578,5 +588,6 @@ export const wordListArray: WordList[] = [
 	examples,
 	examples2,
 	simpleWordsAndPhrases,
-	simpleWordsAndPhrases2
+	simpleWordsAndPhrases2,
+	exceptions
 ];
