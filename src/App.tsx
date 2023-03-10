@@ -51,7 +51,7 @@ function App(): JSX.Element {
 
 	return (
 		<div className="App">
-			<Header></Header>
+			{/* <Header></Header> */}
 			<div className='container'>
 				<Switch>
 					<Route exact path="/" component={TextInput} />

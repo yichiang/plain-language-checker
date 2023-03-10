@@ -9,7 +9,7 @@ import { FeedbackData } from '../../Types';
 
 function ReportPanel(props: ReportPanelPropsType): JSX.Element {
 	const {items} = props;
-	console.log(items);
+	// console.log(items);
 	return (
 		<div className='report-panel'>
 			<h2>Suggestions</h2>
