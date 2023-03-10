@@ -10,7 +10,7 @@ import { Paragraph } from '../../Parser/Paragraph';
 
 function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 	const {items} = props;
-	console.log(items);
+	// console.log(items);
 	const {paragraphs} = props;
 	return (
 		<div className='report-panel'>
