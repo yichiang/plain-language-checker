@@ -126,7 +126,7 @@ function validatorIncludesNoRegex (sentence: string, wordsToSearch: string): boo
 const transitionWordsAdd = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when adding a point',
+	'Nice use of a transition word! Use this when adding a point.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -136,7 +136,7 @@ const transitionWordsAdd = new WordList(
 const transitionWordsExample = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when giving an example',
+	'Nice use of a transition word! Use this when giving an example.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -146,7 +146,7 @@ const transitionWordsExample = new WordList(
 const transitionWordsRephrasing = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when rephrasing',
+	'Nice use of a transition word! Use this when rephrasing.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -156,7 +156,7 @@ const transitionWordsRephrasing = new WordList(
 const transitionWordsResult = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when introducing a result',
+	'Nice use of a transition word! Use this when introducing a result.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -166,7 +166,7 @@ const transitionWordsResult = new WordList(
 const transitionWordsContrasting = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when contrasting',
+	'Nice use of a transition word! Use this when contrasting.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -176,7 +176,7 @@ const transitionWordsContrasting = new WordList(
 const transitionWordsSummingUp = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when summing up',
+	'Nice use of a transition word! Use this when summing up.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),
@@ -186,7 +186,7 @@ const transitionWordsSummingUp = new WordList(
 const transitionWordsSequencing = new WordList(
 	'Transition words',
 	FeedbackType.Kudo,
-	'Nice use of a transition word! Use this when sequencing ideas',
+	'Nice use of a transition word! Use this when sequencing ideas.',
 	'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 	'Use transition words - Plain language guidelines',
 	new Map<string, string>(),

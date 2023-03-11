@@ -15,7 +15,7 @@ export default function checkPassive(sentence: Sentence, checkForBy=false) {
 	while(match) {
 		// exception
 		if(match[0].indexOf('indeed') === -1) {
-			sentence.getSuggestions().push(new Suggestion(         
+			sentence.getSuggestions().push(new Suggestion(
 				'Use active voice',
 				'https://www.plainlanguage.gov/guidelines/conversational/use-active-voice/',
 				'Use active voice - Plain language guidelines',
@@ -23,7 +23,7 @@ export default function checkPassive(sentence: Sentence, checkForBy=false) {
 				sentence.getParagraphNumber(),
 				sentence.getSentenceNumber(),
 				match[0] || '',
-				`consider replacing "${match[0]}" with active voice`
+				`consider replacing "${match[0]}" with active voice.`
 			));
 		}
 		match = r.exec(sentence.getText());

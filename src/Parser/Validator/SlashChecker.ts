@@ -29,10 +29,10 @@ export default function reportSlashUsage(sentence: Sentence) {
 			'Don’t use slashes', 
 			'https://www.plainlanguage.gov/guidelines/conversational/dont-use-slashes/',
 			'Don’t use slashes - Plain language guidelines',
-			`The sentence contains ${match.join(',')}.`,
+			`The sentence contains ${match.join(', ')}.`,
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
-			`${match.join(',')}`,
+			`${match.join(', ')}`,
 			'Please consider replacing the slash with words.'
 		));
 	}

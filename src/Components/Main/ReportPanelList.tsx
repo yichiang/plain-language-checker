@@ -36,7 +36,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 							{ paragraphs && paragraphs[paragraphNumber-1].getSentences()[sentenceNumber-1].markPrinted() }
 
 							<ListItem key={2*index+1}>
-								[{feedbackType}] {name}
+								[{feedbackType}] {name && <>{name}: </>}
 								<strong> {matchedString} </strong>
 								<UnorderedList nested>
 									<ListItem>
