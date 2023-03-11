@@ -1,6 +1,6 @@
-# Introudction
+# Introduction
 
-https://yichiang.github.io/plain-language-checker
+The published version of the repo can be found at: https://yichiang.github.io/plain-language-checker
 
 
 ## Available Scripts
