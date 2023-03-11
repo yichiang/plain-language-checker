@@ -1,19 +1,18 @@
 import { Kudo, Suggestion } from '../Parser';
 import { Sentence } from '../Sentence';
-type strObj = {[key:string]:string}
+export type strObj = {[key:string]:string}
 
-const possibleWordsWithDef: strObj = {};
-
-export default function reportAbbreviation(sentence: Sentence) {
+export default function reportAbbreviation(
+	sentence: Sentence,	abbreviationDefs: strObj) {
 	const possibleWords: strObj = {};
 	// Process each sentence, looking for Feedback
 	sentence.getWords().forEach( (word: string) => {
 		//check for all caps
-		if(!possibleWordsWithDef[word] && word.length > 1 &&
+		if(!abbreviationDefs[word] && word.length > 1 &&
             word.toUpperCase() === word 
         && !/\d/.test(word)) {
            
-			if (!possibleWords[word] && !possibleWordsWithDef[word]) {
+			if (!possibleWords[word] && !abbreviationDefs[word]) {
 				/* eslint-disable no-useless-escape */
 				const endRegexStr = '\\s((with|of|and|for)+\\s)?';
 				const regexExpressions = word.split('').map((char, index) => {
@@ -26,10 +25,10 @@ export default function reportAbbreviation(sentence: Sentence) {
 				const reg = new RegExp(regexExpressions, 'g');
 				// try to find the definitions
 				const findDefinition = sentence.getText().match(reg);
-				if(!findDefinition && !possibleWordsWithDef[word]){
+				if(!findDefinition && !abbreviationDefs[word]){
 					possibleWords[word] = '1';
 				}else if(findDefinition){
-					possibleWordsWithDef[word] = findDefinition[0];
+					abbreviationDefs[word] = findDefinition[0];
 				}
 			}
 		}
@@ -48,9 +47,9 @@ export default function reportAbbreviation(sentence: Sentence) {
 			`Please consider adding a definition for "${wordList}".`
 		));        
 	}
-	const definteList = Object.keys(possibleWordsWithDef)
-		.filter(abb => possibleWordsWithDef[abb] != 'reported')
-		.map(abb => `${possibleWordsWithDef[abb]} (${abb})`)
+	const definteList = Object.keys(abbreviationDefs)
+		.filter(abb => abbreviationDefs[abb] != 'reported')
+		.map(abb => `${abbreviationDefs[abb]} (${abb})`)
 		.join(',');
 
 	if(definteList.length > 0) {
@@ -65,6 +64,8 @@ export default function reportAbbreviation(sentence: Sentence) {
 		));        
 	}
 
-	Object.keys(possibleWordsWithDef).forEach(abb => possibleWordsWithDef[abb] = 'reported');
+	Object.keys(abbreviationDefs)
+		.forEach(abb => abbreviationDefs[abb] = 'reported');
+	return abbreviationDefs;
 }
 

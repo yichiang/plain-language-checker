@@ -1,7 +1,7 @@
 import { FeedbackData, FeedbackType } from '../Types/index';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
-import reportAbbreviation from './Validator/AbbreviationChecker';
+import reportAbbreviation, { strObj } from './Validator/AbbreviationChecker';
 import checkPassive from './Validator/PassiveVoice';
 import reportSlashUsage from './Validator/SlashChecker';
 import reportSyllableHighCount from './Validator/SyllableCount';
@@ -151,6 +151,7 @@ export class Text {
 	// Function that populates the Feedback items, it will process the text.
 	parseText (): void {
 		// Process each sentence, looking for Feedback
+		let abbreviationDefs: strObj = {};
 		for (const paragraph of this.getParagraphs())
 		{
 			for (const sentence of paragraph.getSentences())
@@ -161,7 +162,7 @@ export class Text {
 					wordList.processSentence(sentence);
 				}
 				// Check for abbreviations
-				reportAbbreviation(sentence);
+				abbreviationDefs = reportAbbreviation(sentence, abbreviationDefs);
 			
 				// Check for passive voice
 				checkPassive(sentence);
