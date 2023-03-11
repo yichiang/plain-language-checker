@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.scss';
-import Header from './Components/Header/Header';
 import Checker from './Components/Main/Checker';
 import { FeedbackData, GeneralFeedbackData } from './Types';
 import { Text } from './Parser/Parser';
@@ -51,7 +50,6 @@ function App(): JSX.Element {
 
 	return (
 		<div className="App">
-			<Header></Header>
 			<div className='container'>
 				<Switch>
 					<Route exact path="/" component={TextInput} />
