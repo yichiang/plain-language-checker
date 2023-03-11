@@ -14,7 +14,7 @@ export default function reportAbbreviation(
            
 			if (!possibleWords[word] && !abbreviationDefs[word]) {
 				/* eslint-disable no-useless-escape */
-				const endRegexStr = '\\s((with|of|and|for)+\\s)?';
+				const endRegexStr = '\\s((with|of|and|for|the|or)+\\s)?';
 				const regexExpressions = word.split('').map((char, index) => {
 					let str = '('+char+'\\w+)';
 					if(index !== word.length-1){
@@ -34,7 +34,7 @@ export default function reportAbbreviation(
 		}
 	});
 
-	const wordList = Object.keys(possibleWords).join(',');
+	const wordList = Object.keys(possibleWords).join(', ');
 	if(wordList.length > 0) {
 		sentence.getSuggestions().push(new Suggestion(
 			'Minimize abbreviations', 
@@ -50,7 +50,7 @@ export default function reportAbbreviation(
 	const definteList = Object.keys(abbreviationDefs)
 		.filter(abb => abbreviationDefs[abb] != 'reported')
 		.map(abb => `${abbreviationDefs[abb]} (${abb})`)
-		.join(',');
+		.join(', ');
 
 	if(definteList.length > 0) {
 		sentence.getSuggestions().push(new Kudo(
