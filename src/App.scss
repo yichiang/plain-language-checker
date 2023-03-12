@@ -1,7 +1,17 @@
 .container {
-    margin-top: 0px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     /* margin: 80px auto; */
     padding: 0 40px 40px 40px;
+}
+
+.highlighter {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    padding: 0 0 1.5rem 0;
+}
+
+.input-text {
+    padding-bottom: 1rem;
 }
