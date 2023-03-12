@@ -6,9 +6,11 @@ export class Sentence {
 	private sentenceNumber: number;
 	private paragraphNumber: number;
 	private words: string[];
+	// Counters
 	private wordsCount: number;
 	private transitionWordsCount: number;
 	private examplesCount: number;
+	private abbreviationsCount: number;
 	// Feedback items
 	private issues: Issue[];
 	private suggestions: Suggestion[];
@@ -39,6 +41,7 @@ export class Sentence {
 		//////////////////////////////////////////////////////////
 		this.transitionWordsCount = 0;
 		this.examplesCount = 0;
+		this.abbreviationsCount = 0;
 		// Feedback items
 		this.issues = [];
 		this.suggestions = [];
@@ -53,6 +56,10 @@ export class Sentence {
 
 	transitionWordFound(): void {
 		this.transitionWordsCount++;
+	}
+
+	abbreviationFound(): void {
+		this.abbreviationsCount++;
 	}
 
 	// Called by the UI when it has been included in the report
@@ -87,6 +94,10 @@ export class Sentence {
 
 	getExamplesCount (): number {
 		return this.examplesCount;
+	}
+
+	getAbbreviationsCount (): number {
+		return this.abbreviationsCount;
 	}
 
 	getIssues (): Issue[] {

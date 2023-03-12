@@ -44,12 +44,34 @@ export function validateTransitionWordsCount(transitionWordCount: number, paragr
 	}
 	else
 	{
-		description = `Way to go! We detected ${transitionWordCount} transition words in your text over ${paragraphCount} paragraph(s).`;
+		description = `Nicely done! We detected ${transitionWordCount} transition words in your text over ${paragraphCount} paragraph(s).`;
 	}
 
 	return {
 		description: description,
 		link: 'https://www.plainlanguage.gov/guidelines/organize/use-transition-words/',
 		linkText: 'Use transition words - Plain language guidelines'
+	};
+}
+
+export function validateAbbreviationsCount(abbreviationsCount: number, paragraphCount: number): GeneralFeedbackData {
+	let description = '';
+	if (abbreviationsCount === 0)
+	{
+		description = 'Well done! We did not find any abbreviations in your text.';
+	}
+	else if (abbreviationsCount < 4)
+	{
+		description = `We detected ${abbreviationsCount} abbreviations in your text over ${paragraphCount} paragraph(s). Remember to keep these to a minimum.`;
+	}
+	else
+	{
+		description = `We detected ${abbreviationsCount} abbreviations in your text over ${paragraphCount} paragraph(s). Try to limit the number of abbreviations in one document to at most three.`;
+	}
+
+	return {
+		description: description,
+		link: 'https://www.plainlanguage.gov/guidelines/words/minimize-abbreviations/',
+		linkText: 'Minimize abbreviations - Plain language guidelines'
 	};
 }

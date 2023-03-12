@@ -45,7 +45,8 @@ export default function reportAbbreviation(
 			sentence.getSentenceNumber(),
 			wordList || '',
 			`Please consider adding a definition for "${wordList}".`
-		));        
+		));
+		sentence.abbreviationFound();
 	}
 	const definedList = Object.keys(abbreviationDefs)
 		.filter(abb => abbreviationDefs[abb] != 'reported')
@@ -61,7 +62,8 @@ export default function reportAbbreviation(
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			definedList || ''
-		));        
+		));
+		sentence.abbreviationFound();
 	}
 
 	Object.keys(abbreviationDefs)

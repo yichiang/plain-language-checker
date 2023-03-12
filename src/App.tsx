@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import TextInput from './Components/TextInput/TextInput';
 import ReportPanelList from './Components/Main/ReportPanelList';
 import GeneralCommentsList from './Components/Main/GeneralCommentsList';
-import { validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
+import { validateAbbreviationsCount, validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
 
 function App(): JSX.Element {
 	const [specificFeedbackList, setSpecificFeedbackList] = useState<FeedbackData[]>([]);
@@ -45,7 +45,8 @@ function App(): JSX.Element {
 		// Check that examples and transition words are used
 		const examplesFeedback = validateExampleCount(parsedText.getExamplesCount(), parsedText.getParagraphsCount());
 		const transitionWordsFeedback = validateTransitionWordsCount(parsedText.getTransitionWordsCount(), parsedText.getParagraphsCount());
-		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback]);
+		const abbreviationsFeedback = validateAbbreviationsCount(parsedText.getAbbreviationsCount(), parsedText.getParagraphsCount());
+		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
 	return (
