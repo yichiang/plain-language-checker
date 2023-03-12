@@ -47,20 +47,20 @@ export default function reportAbbreviation(
 			`Please consider adding a definition for "${wordList}".`
 		));        
 	}
-	const definteList = Object.keys(abbreviationDefs)
+	const definedList = Object.keys(abbreviationDefs)
 		.filter(abb => abbreviationDefs[abb] != 'reported')
 		.map(abb => `${abbreviationDefs[abb]} (${abb})`)
 		.join(', ');
 
-	if(definteList.length > 0) {
+	if(definedList.length > 0) {
 		sentence.getSuggestions().push(new Kudo(
 			'Found the definition of an abbreviation', 
 			'https://www.plainlanguage.gov/guidelines/words/minimize-abbreviations/',
 			'Minimize abbreviations - Plain language guidelines',
-			`The sentence contains an abbreviation with a definition: ${definteList}. Remember to keep abbreviations to a minimum.`,
+			`The sentence contains an abbreviation with a definition: ${definedList}. Remember to keep abbreviations to a minimum.`,
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
-			definteList || ''
+			definedList || ''
 		));        
 	}
 
