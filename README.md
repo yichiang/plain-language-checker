@@ -1,5 +1,5 @@
 # Basic Information
-Our tool is available in Github Page: [our plain laugage website](https://yichiang.github.io/plain-language-checker).
+Our tool is available in the following GitHub Page: [Plain Language Checker website](https://yichiang.github.io/plain-language-checker).
 
 # Introduction
 
@@ -25,7 +25,7 @@ There are other tools aimed at text readability. These include:
 
 # Methodology
 
-We created a simple website. The users can enter their article or text. Our software will run a list of checkers and validators based on [PlainLanguage.Gov](https://www.plainlanguage.gov/). For this website, we choose ReactJS to build the front-end and store our code in a [public Github repository](https://github.com/yichiang/plain-language-checker). It allows the public to modify and contribute to the code. We also choose a free Github Page to host the website. Therefore, it encourages everyone to clone our repository, and set up their Github page for free.
+We created a simple website. The users can enter their article or text. Our software will run a list of checkers and validators based on [PlainLanguage.Gov](https://www.plainlanguage.gov/). For this website, we choose ReactJS to build the front-end and store our code in a [public GitHub repository](https://github.com/yichiang/plain-language-checker). It allows the public to modify and contribute to the code. We also choose a free GitHub Page to host the website. Therefore, it encourages everyone to clone our repository, and set up their GitHub page for free.
 
 Although we did not have the opportunity to interact with people with disabilities directly, we found multiple first person accounts from people with and without disabilities regarding plain language. One of our teammates had lived with someone who has Autism for 4 years. Based on their experience, it was really important to speak in plain language. If the text is too complicated it can cause people to feel confused or bad about themselves. Using plain language helps people feel included.
 
@@ -66,7 +66,7 @@ None of these reported any errors. In addition, we conducted manual testing usin
 # Credits
 - Syllable Open Source Project [Syllable NPM Info](https://www.npmjs.com/package/syllable)
 
-- Passive Open Source Project [Passive - Guthub Info](https://github.com/btford/passive-voice/blob/master/passive.js)
+- Passive Open Source Project [Passive - GitHub Info](https://github.com/btford/passive-voice/blob/master/passive.js)
 
 # How to get started
 ## Available Scripts
@@ -102,9 +102,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
