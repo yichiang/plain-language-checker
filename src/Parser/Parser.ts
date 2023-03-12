@@ -226,11 +226,11 @@ export class Issue extends Feedback {
 		description: string,
 		paragraphNumber: number,
 		sentenceNumber: number,
-		stringIssue: string,
+		matchedString: string,
 		stringSuggestion = ''
 	) {
 		// The values below should be part of the metadata in the text file
-		super(name, FeedbackType.Issue, link, linkText, description, paragraphNumber, sentenceNumber, stringIssue, stringSuggestion);
+		super(name, FeedbackType.Issue, link, linkText, description, paragraphNumber, sentenceNumber, matchedString, stringSuggestion);
 	}
 }
 
