@@ -16,8 +16,10 @@ export class Sentence {
 	private hasBeenPrinted: boolean;
 
 	constructor(text: string, sentenceNumber: number, paragraphNumber: number) {
+		// Handle ellipsis
+		this.text = text.trim().replace(/\.\.\./gi, ' ');
 		// Handle multiple whitespaces
-		this.text = text.trim().replace(/[\s]+/gi, ' ');
+		this.text = this.text.trim().replace(/[\s]+/gi, ' ');
 		// Sentence number, starts at 1 for the first sentence in the paragraph
 		this.sentenceNumber = sentenceNumber;
 		this.paragraphNumber = paragraphNumber;
