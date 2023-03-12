@@ -7,6 +7,7 @@ export enum FeedbackType {
 // TODO: Add more information here. We could list the words in the context or just say a word number in the sentence
 // https://github.com/yichiang/plain-language-checker/issues/33
 export type FeedbackData = {
+    key?: string;
     name: string;
     feedbackType: FeedbackType;
     link: string;
