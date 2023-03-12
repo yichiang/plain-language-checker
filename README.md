@@ -23,6 +23,8 @@ There are other tools aimed at text readability. These include:
 - [The up-goer five text editor](https://splasho.com/upgoer5/#) by Theo Sanderson
 - [Grammarly readability score](https://www.grammarly.com/blog/readability-scores/)
 
+However, these tools are aimed at readability and while they do overlap in some ways with plain language writing, these tools don’t target plain language writing directly.
+
 # Methodology
 
 We created a simple website. The users can enter their article or text. Our software will run a list of checkers and validators based on [PlainLanguage.Gov](https://www.plainlanguage.gov/). For this website, we choose ReactJS to build the front-end and store our code in a [public GitHub repository](https://github.com/yichiang/plain-language-checker). It allows the public to modify and contribute to the code. We also choose a free GitHub Page to host the website. Therefore, it encourages everyone to clone our repository, and set up their GitHub page for free.
