@@ -6,7 +6,7 @@ import { Text } from './Parser/Parser';
 import { Route, Switch } from 'react-router-dom';
 import ReportPanelList from './Components/Main/ReportPanelList';
 import GeneralCommentsList from './Components/Main/GeneralCommentsList';
-import { validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
+import { validateAbbreviationsCount, validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
 import Highlighter from 'react-highlight-words';
 
 function App(): JSX.Element {
@@ -35,7 +35,8 @@ function App(): JSX.Element {
 		// Check that examples and transition words are used
 		const examplesFeedback = validateExampleCount(parsedText.getExamplesCount(), parsedText.getParagraphsCount());
 		const transitionWordsFeedback = validateTransitionWordsCount(parsedText.getTransitionWordsCount(), parsedText.getParagraphsCount());
-		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback]);
+		const abbreviationsFeedback = validateAbbreviationsCount(parsedText.getAbbreviationsCount(), parsedText.getParagraphsCount());
+		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
 	function searchMatchedString(matchedString: string): void {
