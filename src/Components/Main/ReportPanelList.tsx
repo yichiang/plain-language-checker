@@ -10,7 +10,7 @@ import { Paragraph } from '../../Parser/Paragraph';
 import { groupBy } from '../../Parser/Validator/helper';
 
 function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
-	const {items} = props;
+	const {items, searchMatchedString} = props;
 	const {paragraphs} = props;
 	const keyItems = items.map( item => {
 		item.key = item.paragraphNumber +'-'+ item.sentenceNumber;
@@ -27,18 +27,23 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 					const {paragraphNumber,
 						sentenceNumber
 					} = items[0];
+					const matchedString = paragraphs ? paragraphs[paragraphNumber - 1].getSentences()[sentenceNumber - 1].getText() : '';
 					return (
-
 						<ListItem key={2*index} style={{marginBottom: '20px'}}>
-			
-
-							<p><strong> Paragraph {paragraphNumber}, sentence {sentenceNumber}: </strong> 
-								{paragraphs && paragraphs[paragraphNumber-1].getSentences()[sentenceNumber-1].getText()}
+							<Link
+								onClick={() => {
+									searchMatchedString(matchedString);
+								}}
+							>
+								<strong> Paragraph {paragraphNumber}, sentence {sentenceNumber}: </strong>
+							</Link>
+							<p>
+								<em>{matchedString}</em>
 							</p>
 							{items.map( (item, index) => {
-								const {name, 
+								const {name,
 									matchedString,
-									stringSuggestion, 
+									stringSuggestion,
 									description,
 									feedbackType,
 									link,
@@ -47,8 +52,8 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 								return (
 									<UnorderedList key={2*index+1} nested style={{marginTop: '10px'}}>
 										<ListItem>
-										[{feedbackType}] {name && <>{name}: </>} 
-											<strong> {matchedString} </strong>
+											[{feedbackType}] {name && <>{name}: </>}
+											<strong><em>{matchedString}</em></strong>
 										</ListItem>
 
 										<UnorderedList nested style={{marginTop: '5px'}}>
@@ -64,18 +69,17 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 										</UnorderedList>
 									</UnorderedList>
 								);})}
-
 						</ListItem>
 					);
-
 				})}
 			</UnorderedList>
 		</div>
 	);
 }
 
-type ReportPanelListPropsType = {
-    items: FeedbackData[],
-	paragraphs: Paragraph[] | undefined
+interface ReportPanelListPropsType {
+	items: FeedbackData[];
+	paragraphs: Paragraph[] | undefined;
+	searchMatchedString: (matchedString: string) => void;
 }
 export default ReportPanelList;

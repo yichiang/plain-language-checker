@@ -1,43 +1,33 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.scss';
 import Checker from './Components/Main/Checker';
 import { FeedbackData, GeneralFeedbackData } from './Types';
 import { Text } from './Parser/Parser';
 import { Route, Switch } from 'react-router-dom';
-import TextInput from './Components/TextInput/TextInput';
 import ReportPanelList from './Components/Main/ReportPanelList';
 import GeneralCommentsList from './Components/Main/GeneralCommentsList';
 import { validateAbbreviationsCount, validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
+import Highlighter from 'react-highlight-words';
 
 function App(): JSX.Element {
 	const [specificFeedbackList, setSpecificFeedbackList] = useState<FeedbackData[]>([]);
 	const [generalFeedbackList, setGeneralFeedbackList] = useState<GeneralFeedbackData[]>([]);
 	const [parsedTextState, setParsedTextState] = useState<Text>();
+	const [text, setText] = useState<string>('');
+	const [searchWords, setSearchWords] = useState<string []>(['']);
+	const [anchorTarget, setAnchorTarget] = useState<HTMLElement | null>();
+
+	useEffect(() => {
+		setAnchorTarget(document.getElementById('input-text'));
+	});
 
 	const onClickSubmit = (article: string) => {
-
+		setText(article);
 		const parsedText = new Text(article);
-
-		// console.log('Paragraph count: ' + parsedText.getParagraphsCount());
-		// console.log('Sentence count: ' + parsedText.getSentencesCount());
-		// console.log('Word count: ' + parsedText.getWordsCount());
 
 		// Look for Feedback
 		parsedText.parseText();
 		setParsedTextState(parsedText);
-
-		// console.log('Issues count: ' + parsedText.getIssuesCount());
-		// console.log('Suggestions count: ' + parsedText.getSuggestionsCount());
-		// console.log('Kudos count: ' + parsedText.getKudosCount());
-		// console.log('Transition words count: ' + parsedText.getTransitionWordsCount());
-		// console.log('Examples count: ' + parsedText.getExamplesCount());
-
-		// console.log('---------- Issues ----------');
-		// console.log(parsedText.getIssues());
-		// console.log('---------- Suggestions ----------');
-		// console.log(parsedText.getSuggestions());
-		// console.log('---------- Kudos ----------');
-		// console.log(parsedText.getKudos());
 
 		const list: FeedbackData[] = parsedText.getFeedback();
 		setSpecificFeedbackList(list);
@@ -49,16 +39,42 @@ function App(): JSX.Element {
 		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
+	function searchMatchedString(matchedString: string): void {
+		setSearchWords([matchedString]);
+		if (anchorTarget) {
+			anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	}
+
 	return (
 		<div className="App">
 			<div className='container'>
 				<Switch>
-					<Route exact path="/" component={TextInput} />
+					<Route exact path="/" />
+					<Route path="/input-text#"/>
 				</Switch>
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
-				{specificFeedbackList && <ReportPanelList items={specificFeedbackList} paragraphs={parsedTextState?.getParagraphs()}/>}
+				<section id="input-text">
+					<div className='highlighter'>
+						<h2 className={'input-text'}>Input Text</h2>
+						<Highlighter
+							highlightClassName="YourHighlightClass"
+							searchWords={searchWords}
+							autoEscape={true}
+							textToHighlight={text}
+						/>
+					</div>
+				</section>
+				{
+					specificFeedbackList &&
+					<ReportPanelList
+						items={specificFeedbackList}
+						paragraphs={parsedTextState?.getParagraphs()}
+						searchMatchedString={searchMatchedString}
+					/>
+				}
 				{generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
 			</div>
 		</div>
