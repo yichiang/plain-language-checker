@@ -189,7 +189,7 @@ export class Text {
 						'', 
 						'https://www.plainlanguage.gov/guidelines/concise/write-short-sentences/',
 						'Write short sentences - Plain language guidelines',
-						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over the recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
+						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over our recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
 						sentence.getParagraphNumber(),
 						sentence.getSentenceNumber(),
 						'Long sentence'));
@@ -208,7 +208,7 @@ export class Text {
 					'', 
 					'https://www.plainlanguage.gov/guidelines/concise/write-short-paragraphs/',
 					'Write short paragraphs - Plain language guidelines',
-					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over the recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
+					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over our recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
 					paragraph.getParagraphNumber(),
 					sentenceToInsertSuggestion.getSentenceNumber(),
 					'Long paragraph'));
