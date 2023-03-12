@@ -12,6 +12,11 @@ function Checker(props: CheckerPropsType): JSX.Element {
 		setInputContent((target as HTMLInputElement).value);
 	};
 
+	function onClick(){
+		props.onClickSubmit(inputContent);
+		setInputContent('');
+	}
+
 	return (
 		<div>
 			<h1 className='main-checker-title'>Plain Language Checker</h1>
@@ -28,8 +33,10 @@ function Checker(props: CheckerPropsType): JSX.Element {
 			/>
 			<Button 
 				className="submit-btn"
-				onClick={() => props.onClickSubmit(inputContent)}>
-            Submit
+				disabled={inputContent === ''}
+				onClick={onClick}
+			>
+				Submit
 			</Button>
 
 		</div>
