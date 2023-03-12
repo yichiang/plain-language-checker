@@ -62,7 +62,7 @@ export function validateAbbreviationsCount(abbreviationsCount: number, paragraph
 	}
 	else if (abbreviationsCount < 4)
 	{
-		description = `We detected ${abbreviationsCount} abbreviations in your text over ${paragraphCount} paragraph(s). Remember to keep these to a minimum.`;
+		description = `We detected ${abbreviationsCount} abbreviations in your text over ${paragraphCount} paragraph(s). Remember to keep abbreviations to a minimum.`;
 	}
 	else
 	{
