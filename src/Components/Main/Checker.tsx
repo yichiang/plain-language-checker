@@ -14,7 +14,6 @@ function Checker(props: CheckerPropsType): JSX.Element {
 
 	function onClick(){
 		props.onClickSubmit(inputContent);
-		setInputContent('');
 	}
 
 	return (
