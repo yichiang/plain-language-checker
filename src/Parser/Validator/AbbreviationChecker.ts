@@ -4,17 +4,19 @@ export type strObj = {[key:string]:string}
 
 export default function reportAbbreviation(
 	sentence: Sentence,	abbreviationDefs: strObj) {
-	const possibleWords: strObj = {};
+	const uppercaseWords: strObj = {};
 	// Process each sentence, looking for Feedback
 	sentence.getWords().forEach( (word: string) => {
-		//check for all caps
+		// First, remove parenthesis
+		word = word.replace(/\(+/, '').replace(/\)+/, '');
+		// Check for all caps
 		if(!abbreviationDefs[word] && word.length > 1 &&
             word.toUpperCase() === word 
         && !/\d/.test(word)) {
            
-			if (!possibleWords[word] && !abbreviationDefs[word]) {
+			if (!uppercaseWords[word] && !abbreviationDefs[word]) {
 				/* eslint-disable no-useless-escape */
-				const endRegexStr = '\\s((with|of|and|for|the|or)+\\s)?';
+				const endRegexStr = '(\\s|\\-)((with|of|and|for|the|or)+\\s)*';
 				const regexExpressions = word.split('').map((char, index) => {
 					let str = '('+char+'\\w+)';
 					if(index !== word.length-1){
@@ -26,7 +28,7 @@ export default function reportAbbreviation(
 				// try to find the definitions
 				const findDefinition = sentence.getText().match(reg);
 				if(!findDefinition && !abbreviationDefs[word]){
-					possibleWords[word] = '1';
+					uppercaseWords[word] = '1';
 				}else if(findDefinition){
 					abbreviationDefs[word] = findDefinition[0];
 				}
@@ -34,7 +36,7 @@ export default function reportAbbreviation(
 		}
 	});
 
-	const wordList = Object.keys(possibleWords).join(', ');
+	const wordList = Object.keys(uppercaseWords).join(', ');
 	if(wordList.length > 0) {
 		sentence.getSuggestions().push(new Suggestion(
 			'Minimize abbreviations', 

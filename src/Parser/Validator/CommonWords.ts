@@ -2170,6 +2170,7 @@ export const commonWords: Set<string> = new Set<string>([
 	'production',
 	'profession',
 	'professional',
+	'professionals',
 	'professor',
 	'profile',
 	'profit',
