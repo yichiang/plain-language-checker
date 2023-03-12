@@ -72,6 +72,15 @@ export class Text {
 		return count;
 	}
 
+	getAbbreviationsCount (): number {
+		let count = 0;
+		for (const paragraph of this.paragraphs)
+		{
+			count += paragraph.getAbbreviationsCount();
+		}
+		return count;
+	}
+
 	getExamplesCount (): number {
 		let count = 0;
 		for (const paragraph of this.paragraphs)

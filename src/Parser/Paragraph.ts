@@ -60,6 +60,15 @@ export class Paragraph {
 		return count;
 	}
 
+	getAbbreviationsCount (): number {
+		let count = 0;
+		for (const sentence of this.sentences)
+		{
+			count += sentence.getAbbreviationsCount();
+		}
+		return count;
+	}
+
 	getText (): string {
 		return this.text;
 	}
