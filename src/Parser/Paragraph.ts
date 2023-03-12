@@ -15,7 +15,8 @@ export class Paragraph {
 		let idx = 1;
 		for (const sentenceText of sentencesText)
 		{
-			this.sentences.push(new Sentence(sentenceText, idx, this.paragraphNumber));
+			// Remove trailing dots from sentence
+			this.sentences.push(new Sentence(sentenceText.replace(/\.+$/, ''), idx, this.paragraphNumber));
 			idx++;
 		}
 	}
