@@ -29,6 +29,7 @@ We created a simple website. The users can enter their article or text. Our soft
 
 Although we did not have the opportunity to interact with people with disabilities directly, we found multiple first person accounts from people with and without disabilities regarding plain language. One of our teammates had lived with someone who has Autism for 4 years. Based on their experience, it was really important to speak in plain language. If the text is too complicated it can cause people to feel confused or bad about themselves. Using plain language helps people feel included.
 
+The plain language checker will first clean up the input text. This involves doing things like replacing multiple line breaks with just one and replacing tabs with spaces. Then, the input text is split into paragraphs and each paragraph is split into sentences. Each sentence is then processed by multiple functions that check different plain language guidelines. These functions will generate feedback items that will form the report. The feedback items in the report are grouped by sentence and are reported in the following order: issues, suggestions and kudos.
 
 # Disability Justice Perspective
 
@@ -36,7 +37,7 @@ We found the following first person accounts:
 
 - [Connect with Plain Language](https://www.youtube.com/watch?v=UlpUxa6EngY)
 - [Plain Language Writing — An Essential Part Of Accessibility](https://www.forbes.com/sites/andrewpulrang/2020/10/22/plain-language-writing---an-essential-part-of-accessibility/?sh=68cb06b87935)
-- "Plain language is important. It helps everyone understand and participate in the conversation" from Liz Weintraub.
+    - "Plain language is important. It helps everyone understand and participate in the conversation" from Liz Weintraub.
 - [The right to understand by Sandra Fisher Martins](https://www.youtube.com/watch?v=tP2y0vU7EG8)
 - [Demand to Understand: How Plain Language Makes Life Simpler, by Deborah Bosley](https://www.youtube.com/watch?v=OXcLwlZOE1s)
 
