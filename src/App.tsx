@@ -40,12 +40,8 @@ function App(): JSX.Element {
 		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
-	function escapeRegExp(string: string) {
-		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-	}
-
 	function searchMatchedString(matchedString: string): void {
-		setSearchWords([new RegExp(`\\b${escapeRegExp(matchedString)}\\b`)]);
+		setSearchWords([matchedString]);
 		if (anchorTarget) {
 			anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
@@ -55,7 +51,7 @@ function App(): JSX.Element {
 		<div className="App">
 			<div className='container'>
 				<Switch>
-					<Route exact path="/" />
+					<Route exact path="/"/>
 					<Route path="/input-text#"/>
 				</Switch>
 				<Checker
@@ -65,9 +61,8 @@ function App(): JSX.Element {
 					<div className='highlighter'>
 						<h2 className={'input-text'}>Input Text</h2>
 						<Highlighter
-							highlightClassName="YourHighlightClass"
 							searchWords={searchWords}
-							autoEscape={false}
+							autoEscape={true}
 							textToHighlight={text}
 						/>
 					</div>
