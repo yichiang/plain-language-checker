@@ -22,8 +22,8 @@ function Checker(props: CheckerPropsType): JSX.Element {
 			<TextArea
 				className='checker-text-area'
 				id="main-checker-text-area"
-				labelText="Plain language checker TextArea"
-				hideLabel
+				labelText="Please enter the article you want to check"
+				enableCounter
 				maxCount={2000}
 				cols={200}
 				rows={10}
