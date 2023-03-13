@@ -23,6 +23,7 @@ export default function checkPassive(sentence: Sentence, checkForBy=false) {
 				sentence.getParagraphNumber(),
 				sentence.getSentenceNumber(),
 				match[0] || '',
+				match[0] || '',
 				`consider replacing "${match[0]}" with active voice.`
 			));
 		}

@@ -1,4 +1,4 @@
-import { FeedbackData, FeedbackType } from '../Types/index';
+import { FeedbackData, FeedbackType } from '../Types';
 import { Paragraph } from './Paragraph';
 import { Feedback } from './Sentence';
 import reportAbbreviation, { strObj } from './Validator/AbbreviationChecker';
@@ -186,13 +186,15 @@ export class Text {
 				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
 				{
 					sentence.getSuggestions().push(new Suggestion(
-						'', 
+						'Long sentence',
 						'https://www.plainlanguage.gov/guidelines/concise/write-short-sentences/',
 						'Write short sentences - Plain language guidelines',
 						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over our recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
 						sentence.getParagraphNumber(),
 						sentence.getSentenceNumber(),
-						'Long sentence'));
+						'',
+						'',
+						''));
 				}
 
 			}
@@ -205,13 +207,15 @@ export class Text {
 				const sentenceToInsertSuggestion = paragraph.getSentences()[0];
 				// // const textToInclude = sentenceToInsertSuggestion.getText();
 				sentenceToInsertSuggestion.getSuggestions().push(new Suggestion(
-					'', 
+					'Long paragraph',
 					'https://www.plainlanguage.gov/guidelines/concise/write-short-paragraphs/',
 					'Write short paragraphs - Plain language guidelines',
 					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over our recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
 					paragraph.getParagraphNumber(),
 					sentenceToInsertSuggestion.getSentenceNumber(),
-					'Long paragraph'));
+					'',
+					'',
+					''));
 			}
 		}
 	}
@@ -243,10 +247,11 @@ export class Suggestion extends Feedback {
 		paragraphNumber: number,
 		sentenceNumber: number,
 		matchedString: string,
-		stringSuggestion = ''
+		trueMatchedString: string,
+		stringSuggestion: string
 	) {
 		// The values below should be part of the metadata in the text file
-		super(name, FeedbackType.Suggestion, link, linkText, description, paragraphNumber, sentenceNumber, matchedString, stringSuggestion);
+		super(name, FeedbackType.Suggestion, link, linkText, description, paragraphNumber, sentenceNumber, matchedString, trueMatchedString, stringSuggestion);
 	}
 }
 
@@ -258,9 +263,10 @@ export class Kudo extends Feedback {
 		description: string,
 		paragraphNumber: number,
 		sentenceNumber: number,
-		matchedString: string
+		matchedString: string,
+		trueMatchedString: string
 	) {
 		// The values below should be part of the metadata in the text file
-		super(name, FeedbackType.Kudo, link, linkText, description, paragraphNumber, sentenceNumber, matchedString);
+		super(name, FeedbackType.Kudo, link, linkText, description, paragraphNumber, sentenceNumber, matchedString, trueMatchedString);
 	}
 }

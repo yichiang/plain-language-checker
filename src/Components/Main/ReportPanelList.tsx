@@ -43,6 +43,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 							{items.map( (item, index) => {
 								const {name,
 									matchedString,
+									trueMatchedString,
 									stringSuggestion,
 									description,
 									feedbackType,
@@ -53,7 +54,13 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 									<UnorderedList key={2*index+1} nested style={{marginTop: '10px'}}>
 										<ListItem>
 											[{feedbackType}] {name && <>{name}: </>}
-											<strong><em>{matchedString}</em></strong>
+											<Link
+												onClick={() => {
+													searchMatchedString(trueMatchedString);
+												}}
+											>
+												<strong><em>{matchedString}</em></strong>
+											</Link>
 										</ListItem>
 
 										<UnorderedList nested style={{marginTop: '5px'}}>

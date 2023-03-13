@@ -46,6 +46,7 @@ export default function reportAbbreviation(
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			wordList || '',
+			wordList || '',
 			`Please consider adding a definition for "${wordList}".`
 		));
 		sentence.abbreviationFound();
@@ -53,6 +54,11 @@ export default function reportAbbreviation(
 	const definedList = Object.keys(abbreviationDefs)
 		.filter(abb => abbreviationDefs[abb] != 'reported')
 		.map(abb => `${abbreviationDefs[abb]} (${abb})`)
+		.join(', ');
+
+	const matchedList = Object.keys(abbreviationDefs)
+		.filter(abb => abbreviationDefs[abb] != 'reported')
+		.map(abb => `${abbreviationDefs[abb]}`)
 		.join(', ');
 
 	if(definedList.length > 0) {
@@ -63,7 +69,8 @@ export default function reportAbbreviation(
 			`The sentence contains an abbreviation with a definition: ${definedList}. Remember to keep abbreviations to a minimum.`,
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
-			definedList || ''
+			definedList || '',
+			matchedList || ''
 		));
 		sentence.abbreviationFound();
 	}
