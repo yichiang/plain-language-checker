@@ -7,18 +7,13 @@ import { Route, Switch } from 'react-router-dom';
 import ReportPanelList from './Components/Main/ReportPanelList';
 import GeneralCommentsList from './Components/Main/GeneralCommentsList';
 import { validateAbbreviationsCount, validateExampleCount, validateTransitionWordsCount } from './Parser/Validator/WordCounterValidator';
-import Highlighter from 'react-highlight-words';
 
 function App(): JSX.Element {
 	const [specificFeedbackList, setSpecificFeedbackList] = useState<FeedbackData[]>([]);
 	const [generalFeedbackList, setGeneralFeedbackList] = useState<GeneralFeedbackData[]>([]);
 	const [parsedTextState, setParsedTextState] = useState<Text>();
-	const [text, setText] = useState<string>('');
-	const [searchWords, setSearchWords] = useState<string[] | RegExp[]>(['']);
 
 	const onClickSubmit = (article: string) => {
-		setSearchWords(['']);
-		setText(article);
 		const parsedText = new Text(article);
 
 		// Look for Feedback
@@ -35,10 +30,6 @@ function App(): JSX.Element {
 		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
-	function searchMatchedString(matchedString: string): void {
-		setSearchWords([matchedString]);
-	}
-
 	return (
 		<div className="App">
 			<div className='container'>
@@ -49,22 +40,11 @@ function App(): JSX.Element {
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
-				<section id="input-text">
-					<div className='highlighter'>
-						<h2 className={'input-text'}>Input Text</h2>
-						<Highlighter
-							searchWords={searchWords}
-							autoEscape={true}
-							textToHighlight={text}
-						/>
-					</div>
-				</section>
 				{
 					specificFeedbackList &&
 					<ReportPanelList
 						items={specificFeedbackList}
 						paragraphs={parsedTextState?.getParagraphs()}
-						searchMatchedString={searchMatchedString}
 					/>
 				}
 				{generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
