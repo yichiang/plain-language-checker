@@ -31,6 +31,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 					return (
 						<ListItem key={2*index} style={{marginBottom: '20px'}}>
 							<Link
+								href={'#'}
 								onClick={() => {
 									searchMatchedString(matchedString);
 								}}
@@ -55,27 +56,26 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 										<ListItem>
 											[{feedbackType}] {name && <>{name}: </>}
 											<Link
+												href={'#'}
 												onClick={() => {
 													searchMatchedString(trueMatchedString);
 												}}
 											>
 												<strong><em>{matchedString}</em></strong>
 											</Link>
-		
-
 											<UnorderedList nested style={{marginTop: '5px'}}>
 												<ListItem>
-									Description : {description}
+													Description : {description}
 												</ListItem>
-												{stringSuggestion && <ListItem>
-									Suggestions : {stringSuggestion}
-												</ListItem>}
+												{stringSuggestion &&
+													<ListItem>
+														Suggestions : {stringSuggestion}
+													</ListItem>}
 												<ListItem>
-									Reference : <Link href={link}>{linkText}</Link>
+													Reference : <Link href={link} target={'_blank'}>{linkText}</Link>
 												</ListItem>
 											</UnorderedList>
 										</ListItem>
-
 									</UnorderedList>
 								);})}
 						</ListItem>
