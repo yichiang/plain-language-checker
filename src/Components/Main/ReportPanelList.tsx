@@ -61,19 +61,21 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 											>
 												<strong><em>{matchedString}</em></strong>
 											</Link>
+		
+
+											<UnorderedList nested style={{marginTop: '5px'}}>
+												<ListItem>
+									Description : {description}
+												</ListItem>
+												{stringSuggestion && <ListItem>
+									Suggestions : {stringSuggestion}
+												</ListItem>}
+												<ListItem>
+									Reference : <Link href={link}>{linkText}</Link>
+												</ListItem>
+											</UnorderedList>
 										</ListItem>
 
-										<UnorderedList nested style={{marginTop: '5px'}}>
-											<ListItem>
-									Description : {description}
-											</ListItem>
-											{stringSuggestion && <ListItem>
-									Suggestions : {stringSuggestion}
-											</ListItem>}
-											<ListItem>
-									Reference : <Link href={link}>{linkText}</Link>
-											</ListItem>
-										</UnorderedList>
 									</UnorderedList>
 								);})}
 						</ListItem>
