@@ -31,7 +31,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 					return (
 						<ListItem key={2*index} style={{marginBottom: '20px'}}>
 							<Link
-								href={'#'}
+								href={'input-text#'}
 								onClick={() => {
 									searchMatchedString(matchedString);
 								}}
@@ -56,7 +56,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 										<ListItem>
 											[{feedbackType}] {name && <>{name}: </>}
 											<Link
-												href={'#'}
+												href={'input-text#'}
 												onClick={() => {
 													searchMatchedString(trueMatchedString);
 												}}
