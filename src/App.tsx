@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.scss';
 import Checker from './Components/Main/Checker';
 import { FeedbackData, GeneralFeedbackData } from './Types';
@@ -15,11 +15,6 @@ function App(): JSX.Element {
 	const [parsedTextState, setParsedTextState] = useState<Text>();
 	const [text, setText] = useState<string>('');
 	const [searchWords, setSearchWords] = useState<string[] | RegExp[]>(['']);
-	const [anchorTarget, setAnchorTarget] = useState<HTMLElement | null>();
-
-	useEffect(() => {
-		setAnchorTarget(document.getElementById('input-text'));
-	});
 
 	const onClickSubmit = (article: string) => {
 		setSearchWords(['']);
@@ -42,9 +37,6 @@ function App(): JSX.Element {
 
 	function searchMatchedString(matchedString: string): void {
 		setSearchWords([matchedString]);
-		if (anchorTarget) {
-			anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
 	}
 
 	return (

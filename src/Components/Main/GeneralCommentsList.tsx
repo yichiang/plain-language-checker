@@ -21,7 +21,7 @@ function GeneralCommentsList(props: GeneralCommentsListPropsType): JSX.Element {
 					} = item;
 					return (
 						<ListItem key={index}>
-							{description} Reference : <Link href={link}>{linkText}</Link>
+							{description} Reference : <Link href={link} target={'_blank'}>{linkText}</Link>
 						</ListItem>
 					);
 				})}
