@@ -14,7 +14,7 @@ function App(): JSX.Element {
 	const [generalFeedbackList, setGeneralFeedbackList] = useState<GeneralFeedbackData[]>([]);
 	const [parsedTextState, setParsedTextState] = useState<Text>();
 	const [text, setText] = useState<string>('');
-	const [searchWords, setSearchWords] = useState<string []>(['']);
+	const [searchWords, setSearchWords] = useState<string[] | RegExp[]>(['']);
 	const [anchorTarget, setAnchorTarget] = useState<HTMLElement | null>();
 
 	useEffect(() => {
@@ -22,6 +22,7 @@ function App(): JSX.Element {
 	});
 
 	const onClickSubmit = (article: string) => {
+		setSearchWords(['']);
 		setText(article);
 		const parsedText = new Text(article);
 
@@ -39,8 +40,12 @@ function App(): JSX.Element {
 		setGeneralFeedbackList([examplesFeedback, transitionWordsFeedback, abbreviationsFeedback]);
 	};
 
+	function escapeRegExp(string: string) {
+		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	}
+
 	function searchMatchedString(matchedString: string): void {
-		setSearchWords([matchedString]);
+		setSearchWords([new RegExp(`\\b${escapeRegExp(matchedString)}\\b`)]);
 		if (anchorTarget) {
 			anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
@@ -62,7 +67,7 @@ function App(): JSX.Element {
 						<Highlighter
 							highlightClassName="YourHighlightClass"
 							searchWords={searchWords}
-							autoEscape={true}
+							autoEscape={false}
 							textToHighlight={text}
 						/>
 					</div>

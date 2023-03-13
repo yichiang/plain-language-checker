@@ -158,6 +158,7 @@ export class Feedback {
 		paragraphNumber: number,
 		sentenceNumber: number,
 		matchedString: string,
+		trueMatchedString: string,
 		stringSuggestion = ''
 	) {
 		this.data = {
@@ -169,6 +170,7 @@ export class Feedback {
 			paragraphNumber: paragraphNumber,
 			sentenceNumber: sentenceNumber,
 			matchedString: matchedString, // String that matched a keyword
+			trueMatchedString: trueMatchedString,
 			stringSuggestion: stringSuggestion // Other word(s) suggestions, may be empty
 		};
 	}

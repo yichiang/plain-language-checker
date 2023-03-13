@@ -33,6 +33,7 @@ export default function reportSlashUsage(sentence: Sentence) {
 			sentence.getParagraphNumber(),
 			sentence.getSentenceNumber(),
 			`${match.join(', ')}`,
+			`${match.join(', ')}`,
 			'Please consider replacing the slash with words.'
 		));
 	}

@@ -14,6 +14,7 @@ export type FeedbackData = {
     linkText: string;
     description: string;
     matchedString: string;
+    trueMatchedString: string;
     stringSuggestion: string;    
     paragraphNumber: number;
     sentenceNumber: number;

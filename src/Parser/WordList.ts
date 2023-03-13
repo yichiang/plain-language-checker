@@ -56,11 +56,11 @@ export class WordList {
 				}
 				else if (this.feedbackType === FeedbackType.Suggestion)
 				{
-					sentence.getSuggestions().push(new Suggestion(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch, suggestionWords));
+					sentence.getSuggestions().push(new Suggestion(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch, wordsToSearch, suggestionWords));
 				}
 				else if (this.feedbackType === FeedbackType.Kudo)
 				{
-					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch));
+					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch, wordsToSearch));
 				}
 			}
 		}
@@ -75,11 +75,11 @@ export class WordList {
 				}
 				else if (this.feedbackType === FeedbackType.Suggestion)
 				{
-					sentence.getSuggestions().push(new Suggestion(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch));
+					sentence.getSuggestions().push(new Suggestion(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch, wordsToSearch, ''));
 				}
 				else if (this.feedbackType === FeedbackType.Kudo)
 				{
-					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch));
+					sentence.getKudos().push(new Kudo(this.name, this.link, this.linkText, this.description, sentence.getParagraphNumber(), sentence.getSentenceNumber(), wordsToSearch, wordsToSearch));
 				}
 				if (this.name === 'Example used')
 				{
