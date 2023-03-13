@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plain-language-checker/static/css/main.20fbac0c.css",
-    "main.js": "/plain-language-checker/static/js/main.fdd86d71.js",
+    "main.css": "/plain-language-checker/static/css/main.c872bb7f.css",
+    "main.js": "/plain-language-checker/static/js/main.a09ce248.js",
     "static/media/IBMPlexSerif-SemiBoldItalic-Cyrillic.woff": "/plain-language-checker/static/media/IBMPlexSerif-SemiBoldItalic-Cyrillic.d96e5a614e96c351c453.woff",
     "static/media/IBMPlexSerif-SemiBoldItalic-Latin1.woff": "/plain-language-checker/static/media/IBMPlexSerif-SemiBoldItalic-Latin1.b691d8c0c5110ea3659e.woff",
     "static/media/IBMPlexSerif-Italic-Cyrillic.woff": "/plain-language-checker/static/media/IBMPlexSerif-Italic-Cyrillic.452cc78a1baf50168631.woff",
@@ -183,11 +183,11 @@
     "static/media/IBMPlexMono-Light-Latin3.woff2": "/plain-language-checker/static/media/IBMPlexMono-Light-Latin3.8a014da16bb5df1e9830.woff2",
     "static/media/IBMPlexMono-Regular-Latin3.woff2": "/plain-language-checker/static/media/IBMPlexMono-Regular-Latin3.cacfd1d7dbd14067b970.woff2",
     "index.html": "/plain-language-checker/index.html",
-    "main.20fbac0c.css.map": "/plain-language-checker/static/css/main.20fbac0c.css.map",
-    "main.fdd86d71.js.map": "/plain-language-checker/static/js/main.fdd86d71.js.map"
+    "main.c872bb7f.css.map": "/plain-language-checker/static/css/main.c872bb7f.css.map",
+    "main.a09ce248.js.map": "/plain-language-checker/static/js/main.a09ce248.js.map"
   },
   "entrypoints": [
-    "static/css/main.20fbac0c.css",
-    "static/js/main.fdd86d71.js"
+    "static/css/main.c872bb7f.css",
+    "static/js/main.a09ce248.js"
   ]
 }
