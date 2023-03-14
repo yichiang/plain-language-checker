@@ -6,18 +6,19 @@ import {
 import './Checker.scss';
 
 function Checker(props: CheckerPropsType): JSX.Element {
+	const { onClickSubmit } = props;
 	const [inputContent, setInputContent] = useState<string>('');
 	const onTextInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		const target = (event as SyntheticEvent).target;
 		setInputContent((target as HTMLInputElement).value);
 	};
 
-	function onClick(){
-		props.onClickSubmit(inputContent);
+	function onClick() {
+		onClickSubmit(inputContent);
 	}
 
 	return (
-		<div>
+		<div className={'space-margin-bottom'}>
 			<h1 className='main-checker-title'>Plain Language Checker</h1>
 			<TextArea
 				className='checker-text-area'
@@ -37,11 +38,11 @@ function Checker(props: CheckerPropsType): JSX.Element {
 			>
 				Submit
 			</Button>
-
 		</div>
 	);
 }
 type CheckerPropsType = {
-    onClickSubmit:  (inputValue: string) => void;
+	onClickSubmit: (inputValue: string) => void;
 }
+
 export default Checker;

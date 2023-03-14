@@ -10,7 +10,7 @@ import { Paragraph } from '../../Parser/Paragraph';
 import { groupBy } from '../../Parser/Validator/helper';
 
 function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
-	const {items, searchMatchedString} = props;
+	const {items} = props;
 	const {paragraphs} = props;
 	const keyItems = items.map( item => {
 		item.key = item.paragraphNumber +'-'+ item.sentenceNumber;
@@ -30,21 +30,13 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 					const matchedString = paragraphs ? paragraphs[paragraphNumber - 1].getSentences()[sentenceNumber - 1].getText() : '';
 					return (
 						<ListItem key={2*index} style={{marginBottom: '20px'}}>
-							<Link
-								href={'input-text#'}
-								onClick={() => {
-									searchMatchedString(matchedString);
-								}}
-							>
-								<strong> Paragraph {paragraphNumber}, sentence {sentenceNumber}: </strong>
-							</Link>
+							<strong> Paragraph {paragraphNumber}, sentence {sentenceNumber}: </strong>
 							<p>
 								<em>{matchedString}</em>
 							</p>
 							{items.map( (item, index) => {
 								const {name,
 									matchedString,
-									trueMatchedString,
 									stringSuggestion,
 									description,
 									feedbackType,
@@ -55,14 +47,7 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 									<UnorderedList key={2*index+1} nested style={{marginTop: '10px'}}>
 										<ListItem>
 											[{feedbackType}] {name && <>{name}: </>}
-											<Link
-												href={'input-text#'}
-												onClick={() => {
-													searchMatchedString(trueMatchedString);
-												}}
-											>
-												<strong><em>{matchedString}</em></strong>
-											</Link>
+											<strong><em>{matchedString}</em></strong>
 											<UnorderedList nested style={{marginTop: '5px'}}>
 												<ListItem>
 													Description : {description}
@@ -89,6 +74,5 @@ function ReportPanelList(props: ReportPanelListPropsType): JSX.Element {
 interface ReportPanelListPropsType {
 	items: FeedbackData[];
 	paragraphs: Paragraph[] | undefined;
-	searchMatchedString: (matchedString: string) => void;
 }
 export default ReportPanelList;
