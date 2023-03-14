@@ -18,14 +18,13 @@ export class Sentence {
 	private hasBeenPrinted: boolean;
 
 	constructor(text: string, sentenceNumber: number, paragraphNumber: number) {
-		// Handle ellipsis
-		this.text = text.trim().replace(/\.\.\./gi, ' ');
 		// Handle multiple whitespaces
-		this.text = this.text.trim().replace(/[\s]+/gi, ' ');
+		this.text = text.trim().replace(/[\s]+/gi, ' ');
 		// Sentence number, starts at 1 for the first sentence in the paragraph
 		this.sentenceNumber = sentenceNumber;
 		this.paragraphNumber = paragraphNumber;
-		this.words = this.text.split(' ');
+		// Handle ellipsis, commas, semicolon, colon
+		this.words = this.text.replace(/\.\.\./gi, ' ').replace(/,+/, ' ').replace(/:+/, ' ').replace(/;+/, ' ').trim().replace(/[\s]+/gi, ' ').split(' ');
 		// Counters
 		if (this.words.length == 0)
 		{
