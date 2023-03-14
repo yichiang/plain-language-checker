@@ -25,7 +25,7 @@ function Checker(props: CheckerPropsType): JSX.Element {
 				id="main-checker-text-area"
 				labelText="Please enter the article you want to check"
 				enableCounter
-				maxCount={2000}
+				maxCount={10000}
 				cols={200}
 				rows={10}
 				value={inputContent}

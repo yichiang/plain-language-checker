@@ -186,13 +186,13 @@ export class Text {
 				if (sentence.getWordsCount() > maxNumberOfWordsInSentence)
 				{
 					sentence.getSuggestions().push(new Suggestion(
-						'Long sentence',
+						'',
 						'https://www.plainlanguage.gov/guidelines/concise/write-short-sentences/',
 						'Write short sentences - Plain language guidelines',
 						'This sentence is ' + sentence.getWordsCount() + ' words long, which is over our recommended ' + maxNumberOfWordsInSentence + ' words long, please consider splitting or rephrasing it to reduce the length.',
 						sentence.getParagraphNumber(),
 						sentence.getSentenceNumber(),
-						'',
+						'Long sentence',
 						'',
 						''));
 				}
@@ -207,13 +207,13 @@ export class Text {
 				const sentenceToInsertSuggestion = paragraph.getSentences()[0];
 				// // const textToInclude = sentenceToInsertSuggestion.getText();
 				sentenceToInsertSuggestion.getSuggestions().push(new Suggestion(
-					'Long paragraph',
+					'',
 					'https://www.plainlanguage.gov/guidelines/concise/write-short-paragraphs/',
 					'Write short paragraphs - Plain language guidelines',
 					'This paragraph is ' + paragraph.getSentencesCount() + ' sentences long, which is over our recommended ' + maxNumberOfSentencesInParaghraph + ' sentences long, please consider splitting it to reduce the length.',
 					paragraph.getParagraphNumber(),
 					sentenceToInsertSuggestion.getSentenceNumber(),
-					'',
+					'Long paragraph',
 					'',
 					''));
 			}
