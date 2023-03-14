@@ -57,14 +57,18 @@ Additionally, it would be useful to be able to configure the hardcoded threshold
 
 # How you made your app accessible
 
-The app was made simple on purpose, with only the title, a text box for input and a "Submit" button. The report is very simple as well and lists the feedback items found. The specific comments are listed first and then the general comments. We use bold to highlight the important parts of the report and also have text for the links that form the feedback items.
+The app was designed and implemented to be accessible. We added tabindex and roles where it was needed. 
+The app has a title, a text area box for input, and a "Submit" button. The report is very simple and lists the feedback items found.
+The specific comments are listed first and then the general comments.
+We used as many accessible elements as possible. For example, headers and hyperlinks.
 
 In order to verify the accessibility of the website, we used the following automated tools:
 
 - [Web Accessibility Evaluation Tool by WebAIM](https://wave.webaim.org/report#/https://yichiang.github.io/plain-language-checker/%23/).
 - Chrome's extension from [axe DevTools](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US&utm_term=axe%20browser%20extension&utm_campaign=Search%20-%20axe%20DevTools%20-%20Checker&utm_source=adwords&utm_medium=ppc&hsa_src=g&hsa_ad=626089536234&hsa_tgt=kwd-942809056982&hsa_mt=e&hsa_ver=3&hsa_acc=7854167720&hsa_kw=axe%20browser%20extension&hsa_grp=142979637091&hsa_cam=17378411167&hsa_net=adwords&gclid=Cj0KCQiA6rCgBhDVARIsAK1kGPJQa-i2a48Fotz0fFQlcJ6t_yRBdSWJ2TFfpsjHCvGnn7QE27ZpH4QaAtrKEALw_wcB).
 
-None of these reported any errors. In addition, we conducted manual testing using a screen reader and keyboard navigation. We didn't find any issues during our testing.
+None of these reported any errors. In addition, we conducted manual testing using a screen reader (for Windows and Mac) and keyboard navigation.
+We didn't find any issues during our manual testing either.
 
 # Credits
 - Syllable Open Source Project [Syllable NPM Info](https://www.npmjs.com/package/syllable)
@@ -76,7 +80,7 @@ None of these reported any errors. In addition, we conducted manual testing usin
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -84,12 +88,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -98,16 +102,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
