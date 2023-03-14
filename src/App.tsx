@@ -38,17 +38,19 @@ function App(): JSX.Element {
 				<Switch>
 					<Route exact path="/"/>
 				</Switch>
-				<Checker
-					onClickSubmit={onClickSubmit}
-				/>
-				{
-					showResult && specificFeedbackList &&
+				<div role={'main'}>
+					<Checker
+						onClickSubmit={onClickSubmit}
+					/>
+					{
+						showResult && specificFeedbackList &&
 					<ReportPanelList
 						items={specificFeedbackList}
 						paragraphs={parsedTextState?.getParagraphs()}
 					/>
-				}
-				{showResult && generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
+					}
+					{showResult && generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
+				</div>
 			</div>
 		</div>
 	);
