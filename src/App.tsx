@@ -12,8 +12,10 @@ function App(): JSX.Element {
 	const [specificFeedbackList, setSpecificFeedbackList] = useState<FeedbackData[]>([]);
 	const [generalFeedbackList, setGeneralFeedbackList] = useState<GeneralFeedbackData[]>([]);
 	const [parsedTextState, setParsedTextState] = useState<Text>();
+	const [showResult, setShowResult] = useState<boolean>(false);
 
 	const onClickSubmit = (article: string) => {
+		setShowResult(true);
 		const parsedText = new Text(article);
 
 		// Look for Feedback
@@ -35,19 +37,18 @@ function App(): JSX.Element {
 			<div className='container'>
 				<Switch>
 					<Route exact path="/"/>
-					<Route path="/input-text#"/>
 				</Switch>
 				<Checker
 					onClickSubmit={onClickSubmit}
 				/>
 				{
-					specificFeedbackList &&
+					showResult && specificFeedbackList &&
 					<ReportPanelList
 						items={specificFeedbackList}
 						paragraphs={parsedTextState?.getParagraphs()}
 					/>
 				}
-				{generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
+				{showResult && generalFeedbackList && <GeneralCommentsList items={generalFeedbackList}/>}
 			</div>
 		</div>
 	);
